@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { User, Heart, ShoppingCart, Search } from 'lucide-react'
+import { User, Heart, Search } from 'lucide-react'
 import Topbar from './Topbar'
 import Navbar from './Navbar'
+import Cart from './Cart'
+import FavoritesDrawer from './FavoritesDrawer'
 
 const Header = () => {
   return (
@@ -25,19 +27,12 @@ const Header = () => {
           </form>
         </div>
 
-        <div className='flex items-center gap-4'>
+        <div className='flex items-center gap-2'>
           <Link to='/login' className='flex items-center gap-1 hover:text-blue-600'>
-            <User size={20} />
-            <span>Profil</span>
+            <User size={50} className='bg-gray-600 text-white p-2 rounded-[10px]' />
           </Link>
-          <Link to='/products' className='flex items-center gap-1 hover:text-blue-600'>
-            <Heart size={20} />
-            <span>Sevimlilər</span>
-          </Link>
-          <Link to='/cart' className='flex items-center gap-1 hover:text-blue-600'>
-            <ShoppingCart size={20} />
-            <span>Səbət</span>
-          </Link>
+          <FavoritesDrawer />
+          <Cart />
         </div>
       </div>
       <Navbar />
