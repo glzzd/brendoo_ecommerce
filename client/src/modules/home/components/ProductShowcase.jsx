@@ -163,9 +163,10 @@ const ProductShowcase = ({ title, subtitle, products, bgColor = 'bg-white' }) =>
                   <button 
                     onClick={(e) => {
                       e.preventDefault()
+                      e.stopPropagation()
                       toggleFavorite(product)
                     }}
-                    className={`p-2 rounded-full shadow-md transition-colors ${
+                    className={`relative z-10 cursor-pointer p-2 rounded-full shadow-md transition-colors ${
                       isFavorite(product.id) 
                         ? 'bg-red-50 text-red-500 hover:bg-red-100' 
                         : 'bg-white text-gray-600 hover:bg-blue-50 hover:text-blue-600'

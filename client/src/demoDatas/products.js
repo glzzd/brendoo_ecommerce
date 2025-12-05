@@ -63,6 +63,7 @@ export const products = [
     image: massimo,
     price: 89.95,
     rating: 4.7,
+    isNew: true,
     reviewCount: 32,
     views: 5600
   },
