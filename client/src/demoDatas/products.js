@@ -17,7 +17,10 @@ export const products = [
     rating: 4.8,
     reviewCount: 124,
     isNew: true,
-    views: 12500
+    views: 12500,
+    category: 'kisi-geyimi',
+    type: 'shoes',
+    createdAt: '2023-11-15'
   },
   {
     id: 2,
@@ -29,7 +32,10 @@ export const products = [
     rating: 4.9,
     reviewCount: 856,
     isBestSeller: true,
-    views: 18900
+    views: 18900,
+    category: 'kisi-geyimi',
+    type: 'shoes',
+    createdAt: '2023-10-01'
   },
   {
     id: 3,
@@ -40,7 +46,10 @@ export const products = [
     price: 129.99,
     rating: 4.5,
     reviewCount: 45,
-    views: 8400
+    views: 8400,
+    category: 'qadin-geyimi',
+    type: 'clothing',
+    createdAt: '2023-12-01'
   },
   {
     id: 4,
@@ -53,7 +62,10 @@ export const products = [
     rating: 4.6,
     reviewCount: 210,
     discount: 23,
-    views: 9200
+    views: 9200,
+    category: 'qadin-geyimi',
+    type: 'clothing',
+    createdAt: '2023-09-15'
   },
   {
     id: 5,
@@ -65,7 +77,10 @@ export const products = [
     rating: 4.7,
     isNew: true,
     reviewCount: 32,
-    views: 5600
+    views: 5600,
+    category: 'kisi-geyimi',
+    type: 'clothing',
+    createdAt: '2023-11-20'
   },
   {
     id: 6,
@@ -77,7 +92,10 @@ export const products = [
     rating: 5.0,
     reviewCount: 1500,
     isBestSeller: true,
-    views: 25000
+    views: 25000,
+    category: 'etriyyat-kosmetika',
+    type: 'perfume',
+    createdAt: '2023-08-01'
   },
   {
     id: 7,
@@ -88,7 +106,10 @@ export const products = [
     price: 130,
     rating: 4.8,
     reviewCount: 420,
-    views: 14500
+    views: 14500,
+    category: 'kisi-geyimi',
+    type: 'clothing',
+    createdAt: '2023-10-20'
   },
   {
     id: 8,
@@ -100,7 +121,10 @@ export const products = [
     originalPrice: 120,
     rating: 4.6,
     reviewCount: 180,
-    views: 7800
+    views: 7800,
+    category: 'usag-geyimi',
+    type: 'shoes',
+    createdAt: '2023-09-05'
   },
   {
     id: 9,
@@ -112,7 +136,10 @@ export const products = [
     rating: 4.4,
     reviewCount: 65,
     isNew: true,
-    views: 3200
+    views: 3200,
+    category: 'qadin-geyimi',
+    type: 'clothing',
+    createdAt: '2023-11-25'
   },
   {
     id: 10,
@@ -124,7 +151,10 @@ export const products = [
     rating: 4.8,
     reviewCount: 320,
     isNew: true,
-    views: 11000
+    views: 11000,
+    category: 'usag-geyimi',
+    type: 'shoes',
+    createdAt: '2023-11-10'
   },
   {
     id: 11,
@@ -137,7 +167,10 @@ export const products = [
     rating: 4.7,
     reviewCount: 42,
     discount: 25,
-    views: 4500
+    views: 4500,
+    category: 'qadin-geyimi',
+    type: 'clothing',
+    createdAt: '2023-10-15'
   },
   {
     id: 12,
@@ -150,6 +183,9 @@ export const products = [
     rating: 4.9,
     reviewCount: 890,
     discount: 20,
-    views: 19500
+    views: 19500,
+    category: 'etriyyat-kosmetika',
+    type: 'perfume',
+    createdAt: '2023-09-01'
   }
 ];
