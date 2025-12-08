@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { influencers } from '@/demoDatas/influencers'
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 
 const Influencers = () => {
+  const { t, i18n } = useTranslation()
   const allInfluencers = [...influencers, ...influencers, ...influencers]
   
   const [startIndex, setStartIndex] = useState(0)
@@ -50,7 +52,7 @@ const Influencers = () => {
     <section className="py-6 bg-gray-50">
       <div className="container mx-auto px-6">
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-2xl font-bold text-gray-900">Bizi seçən influencerlər</h2>
+          <h2 className="text-2xl font-bold text-gray-900">{t('influencers.title')}</h2>
           <div className="flex gap-2">
             <button 
                 onClick={prev}
@@ -99,7 +101,7 @@ const Influencers = () => {
                         <div className="flex flex-col min-w-0">
                             <h3 className="font-bold text-gray-900 text-base truncate">{influencer.name}</h3>
                             <p className="text-blue-600 text-sm font-medium truncate">{influencer.handle}</p>
-                            <p className="text-gray-500 text-xs mt-1">{influencer.followers} İzləyici</p>
+                            <p className="text-gray-500 text-xs mt-1">{influencer.followers} {t('influencers.followers')}</p>
                         </div>
                     </div>
                     
@@ -158,7 +160,7 @@ const Influencers = () => {
                         ) : (
                             <div className={`w-full h-full flex items-center justify-center p-8 text-center ${selectedStory.stories[storyIndex].bg}`}>
                                 <p className="text-white text-2xl font-bold">
-                                    {selectedStory.stories[storyIndex].content}
+                                    {selectedStory.stories[storyIndex].content[i18n.language]}
                                 </p>
                             </div>
                         )}

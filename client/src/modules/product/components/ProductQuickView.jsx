@@ -11,7 +11,7 @@ const ProductQuickView = ({
   onAddToCart,
   onClose
 }) => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   
   // Use images array if available, otherwise fallback to single image
@@ -53,7 +53,7 @@ const ProductQuickView = ({
             
             <img 
                 src={images[currentImageIndex]} 
-                alt={product.name} 
+                alt={product.name[i18n.language]} 
                 className="w-full h-full object-contain mix-blend-multiply p-8 transition-transform duration-500 hover:scale-105"
             />
         </div>
@@ -83,7 +83,7 @@ const ProductQuickView = ({
                 {product.brand}
             </Link>
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">
-                {product.name}
+                {product.name[i18n.language]}
             </h2>
             
             {/* Rating */}
@@ -110,7 +110,7 @@ const ProductQuickView = ({
             </div>
 
             <p className="text-gray-600 leading-relaxed mb-8">
-                {t('product.description', { brand: product.brand })}
+                {product.description[i18n.language]}
             </p>
 
             {/* Actions */}

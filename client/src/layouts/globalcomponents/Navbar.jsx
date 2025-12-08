@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
 const Navbar = () => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   return (
     <nav className='sticky top-0 z-30 bg-white border-b relative overflow-visible'>
@@ -16,7 +16,7 @@ const Navbar = () => {
                 to={item.link}
                 className={'text-sm md:text-base font-medium text-gray-700 hover:text-blue-600 transition-colors'}
               >
-                {t(`menu.${item.id}`)}
+                {item.name[i18n.language]}
               </Link>
             </li>
           ))}

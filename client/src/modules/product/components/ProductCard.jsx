@@ -9,7 +9,7 @@ import { useCart } from '../../../context/CartContext'
 import { useFavorites } from '../../../context/FavoritesContext'
 
 const ProductCard = ({ product }) => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const { addToCart, cartItems } = useCart()
   const { favorites, toggleFavorite } = useFavorites()
   
@@ -90,7 +90,7 @@ const ProductCard = ({ product }) => {
 
         <img 
           src={images[currentImageIndex]} 
-          alt={product.name} 
+          alt={product.name[i18n.language]} 
           className="w-full h-full object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-110"
         />
         
@@ -134,7 +134,7 @@ const ProductCard = ({ product }) => {
             </DialogTrigger>
             <DialogContent className="min-w-7xl w-[95vw] h-[90vh] p-0 overflow-hidden flex flex-col bg-white rounded-2xl border-none shadow-2xl">
               <VisuallyHidden>
-                <DialogTitle>{product.name}</DialogTitle>
+                <DialogTitle>{product.name[i18n.language]}</DialogTitle>
               </VisuallyHidden>
               <div className="flex-1 h-full overflow-hidden p-6 md:p-10">
                 <ProductQuickView 
@@ -163,7 +163,7 @@ const ProductCard = ({ product }) => {
         </Link>
         
         <Link to={`/products/${product.id}`} className="font-bold text-gray-900 text-base leading-snug mb-2 hover:text-blue-600 transition-colors line-clamp-2">
-          {product.name}
+          {product.name[i18n.language]}
         </Link>
         
         {/* Rating */}

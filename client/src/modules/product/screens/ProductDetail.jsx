@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { products } from '../../../demoDatas/products';
+import { menuItems } from '../../../demoDatas/menu';
 import { useCart } from '../../../context/CartContext';
 import { useFavorites } from '../../../context/FavoritesContext';
 import ProductCard from '../components/ProductCard';
@@ -21,7 +22,7 @@ import {
 } from 'lucide-react';
 
 const ProductDetail = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { id } = useParams();
   const navigate = useNavigate();
   const { addToCart, cartItems } = useCart();
@@ -118,7 +119,7 @@ const ProductDetail = () => {
             <ChevronRight size={14} />
             <Link to="/products" className="hover:text-gray-900">{t('cart.products')}</Link>
             <ChevronRight size={14} />
-            <span className="text-gray-900 font-medium truncate max-w-[200px]">{product.name}</span>
+            <span className="text-gray-900 font-medium truncate max-w-[200px]">{product.name[i18n.language]}</span>
           </div>
         </div>
       </div>
@@ -147,7 +148,7 @@ const ProductDetail = () => {
               
               <img 
                 src={images[currentImageIndex]} 
-                alt={product.name} 
+                alt={product.name[i18n.language]} 
                 className="w-full h-full object-contain mix-blend-multiply p-12 transition-transform duration-500 hover:scale-105"
               />
 
@@ -204,7 +205,7 @@ const ProductDetail = () => {
               </div>
               
               <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
-                {product.name}
+                {product.name[i18n.language]}
               </h1>
               
               <div className="flex items-center gap-4 mb-6">
@@ -235,7 +236,7 @@ const ProductDetail = () => {
             </div>
 
             <p className="text-gray-600 leading-relaxed mb-8 text-lg">
-              {t('product.description', { brand: product.brand })}
+              {product.description[i18n.language]}
             </p>
 
             {/* Actions */}
@@ -346,7 +347,7 @@ const ProductDetail = () => {
                 {activeTab === 'description' && (
                     <div className="prose max-w-none text-gray-600">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            {product.description[i18n.language]}
                         </p>
                         <ul className="mt-4 list-disc pl-5 space-y-2">
                             <li>{t('product.descriptionList.material')}</li>
@@ -364,11 +365,13 @@ const ProductDetail = () => {
                         </div>
                         <div className="flex justify-between py-3 border-b border-gray-100">
                             <span className="text-gray-500">{t('product.specs.category')}</span>
-                            <span className="font-medium text-gray-900 capitalize">{product.category.replace('-', ' ')}</span>
+                            <span className="font-medium text-gray-900 capitalize">
+                              {menuItems.find(item => item.link.includes(product.category))?.name[i18n.language] || product.category.replace('-', ' ')}
+                            </span>
                         </div>
                         <div className="flex justify-between py-3 border-b border-gray-100">
                             <span className="text-gray-500">{t('product.specs.material')}</span>
-                            <span className="font-medium text-gray-900">100% Cotton</span>
+                            <span className="font-medium text-gray-900">{t('product.descriptionList.material')}</span>
                         </div>
                         <div className="flex justify-between py-3 border-b border-gray-100">
                             <span className="text-gray-500">{t('product.specs.season')}</span>

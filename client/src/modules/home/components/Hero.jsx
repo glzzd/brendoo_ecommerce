@@ -1,8 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { heroSlides } from '@/demoDatas/hero'
 import hero1 from '@/assets/hero_1.avif'
 
 const Hero = () => {
+  const { i18n } = useTranslation()
   const images = useMemo(() => ({ hero1 }), [])
   const [index, setIndex] = useState(0)
 
@@ -41,17 +43,17 @@ const Hero = () => {
               <div className={`absolute inset-0 flex ${alignToClasses(slide.align)}`}>
                 <div className='max-w-xl'>
                   <h2 className='text-2xl md:text-4xl font-bold text-gray-900 drop-shadow'>
-                    {slide.title}
+                    {slide.title[i18n.language]}
                   </h2>
                   {slide.description && (
-                    <p className='mt-3 md:mt-4 text-gray-700'>{slide.description}</p>
+                    <p className='mt-3 md:mt-4 text-gray-700'>{slide.description[i18n.language]}</p>
                   )}
                   {slide.ctaText && (
                     <a
                       href={slide.ctaLink}
                       className='mt-6 inline-block px-5 py-2.5 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition-colors'
                     >
-                      {slide.ctaText}
+                      {slide.ctaText[i18n.language]}
                     </a>
                   )}
                 </div>

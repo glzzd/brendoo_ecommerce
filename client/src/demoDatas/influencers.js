@@ -9,10 +9,24 @@ export const influencers = [
     handle: '@aysel_m',
     image: inf1,
     followers: '125K',
-    description: 'Dəb və yaşam tərzi üzrə mütəxəssis',
+    description: {
+      az: 'Dəb və yaşam tərzi üzrə mütəxəssis',
+      en: 'Fashion and lifestyle expert',
+      tr: 'Moda ve yaşam tarzı uzmanı'
+    },
     stories: [
       { id: 101, type: 'image', url: inf1, duration: 3000 },
-      { id: 102, type: 'text', content: 'Yeni kolleksiya möhtəşəmdir! 😍', bg: 'bg-purple-500', duration: 3000 }
+      { 
+        id: 102, 
+        type: 'text', 
+        content: {
+          az: 'Yeni kolleksiya möhtəşəmdir! 😍',
+          en: 'The new collection is amazing! 😍',
+          tr: 'Yeni koleksiyon muhteşem! 😍'
+        }, 
+        bg: 'bg-purple-500', 
+        duration: 3000 
+      }
     ]
   },
   {
@@ -21,10 +35,24 @@ export const influencers = [
     handle: '@samir_aliyev',
     image: inf2,
     followers: '89K',
-    description: 'Texnologiya və qadcet icmalları',
+    description: {
+      az: 'Texnologiya və qadcet icmalları',
+      en: 'Technology and gadget reviews',
+      tr: 'Teknoloji ve gadget incelemeleri'
+    },
     stories: [
         { id: 201, type: 'image', url: inf2, duration: 3000 },
-        { id: 202, type: 'text', content: 'Bu gün yeni iPhone icmalı gəlir!', bg: 'bg-blue-600', duration: 3000 }
+        { 
+          id: 202, 
+          type: 'text', 
+          content: {
+            az: 'Bu gün yeni iPhone icmalı gəlir!',
+            en: 'New iPhone review coming today!',
+            tr: 'Bugün yeni iPhone incelemesi geliyor!'
+          }, 
+          bg: 'bg-blue-600', 
+          duration: 3000 
+        }
     ]
   },
   {
@@ -33,10 +61,24 @@ export const influencers = [
     handle: '@gunay_style',
     image: inf3,
     followers: '230K',
-    description: 'Gözəllik və makiyaj sirləri',
+    description: {
+      az: 'Gözəllik və makiyaj sirləri',
+      en: 'Beauty and makeup secrets',
+      tr: 'Güzellik ve makyaj sırları'
+    },
     stories: [
         { id: 301, type: 'image', url: inf3, duration: 3000 },
-        { id: 302, type: 'text', content: 'Axşam saat 20:00-da canlı yayımdayam', bg: 'bg-pink-500', duration: 3000 }
+        { 
+          id: 302, 
+          type: 'text', 
+          content: {
+            az: 'Axşam saat 20:00-da canlı yayımdayam',
+            en: "I'm live tonight at 20:00",
+            tr: "Bu akşam saat 20:00'de canlı yayındayım"
+          }, 
+          bg: 'bg-pink-500', 
+          duration: 3000 
+        }
     ]
   }
 ];

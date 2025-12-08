@@ -9,14 +9,20 @@
     "cart": "Cart",
     "favorites": "Favorites"
   },
+  "topbar": {
+    "deliveryMessage": "Guaranteed and fast delivery within 5-10 days"
+  },
   "menu": {
     "mens": "Men's Clothing",
     "womens": "Women's Clothing",
-    "kids": "Kids Clothing",
+    "kids": "Kids' Clothing",
     "beauty": "Beauty & Cosmetics",
     "electronics": "Electronics",
-    "discount": "Sale",
+    "discount": "Discount",
     "all": "All Products"
+  },
+  "footer": {
+    "copyright": "© {{year}} Brendoo. All rights reserved."
   },
   "product": {
     "new": "New",
@@ -78,6 +84,10 @@
     "empty": "Favorites list is empty",
     "viewProducts": "View Products"
   },
+  "influencers": {
+    "title": "Influencers Who Chose Us",
+    "followers": "Followers"
+  },
   "login": {
     "welcome": "Welcome back!",
     "subtitle": "Sign in to continue to your account",
@@ -96,7 +106,7 @@
     "mostViewedSubtitle": "Discover Brendoo's most popular products",
     "discounted": "Discounted Products",
     "discountedSubtitle": "Don't miss out on great discounts",
-    "newArrivals": "New Arrivals",
+    "newArrivals": "New Products",
     "newArrivalsSubtitle": "Discover the latest added products",
     "partnerBrands": "Partner Brands"
   },
@@ -104,7 +114,7 @@
     "filters": "Filters",
     "productCount": "{{count}} products",
     "status": "Status",
-    "newArrivalsFilter": "New Arrivals",
+    "newArrivalsFilter": "New Products",
     "discountedFilter": "Discounted",
     "priceRange": "Price Range",
     "category": "Category",
@@ -128,5 +138,17 @@
     "noProducts": "No products found",
     "noProductsDesc": "No products found matching your search criteria. Try clearing filters.",
     "showAll": "Show all products"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "description": "Payment and address details will be filled here."
+  },
+  "register": {
+    "title": "Sign Up",
+    "description": "Registration form will appear here."
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "description": "This area is for logged-in users only."
   }
 }

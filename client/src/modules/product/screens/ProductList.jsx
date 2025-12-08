@@ -31,7 +31,7 @@ const FilterSection = ({ title, children, isOpenDefault = true }) => {
 }
 
 const ProductList = () => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const { category } = useParams()
   
   // States
@@ -62,8 +62,8 @@ const ProductList = () => {
     if (category === 'new-arrivals') return t('shop.newArrivalsProducts')
     
     const menuItem = menuItems.find(item => item.link === `/shop/${category}`)
-    return menuItem ? t(`menu.${menuItem.id}`) : category.replace(/-/g, ' ')
-  }, [category, t])
+    return menuItem ? menuItem.name[i18n.language] : category.replace(/-/g, ' ')
+  }, [category, t, i18n.language])
 
   // Filtering Logic
   const filteredProducts = useMemo(() => {

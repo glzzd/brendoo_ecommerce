@@ -8,7 +8,16 @@ import zara from '../assets/brands/zara.png';
 export const products = [
   {
     id: 1,
-    name: 'Ultraboost Light Running Shoes',
+    name: {
+      az: 'Ultraboost Light Qaçış Ayaqqabısı',
+      en: 'Ultraboost Light Running Shoes',
+      tr: 'Ultraboost Light Koşu Ayakkabısı'
+    },
+    description: {
+      az: 'Hər addımda maksimum enerji qaytarılması üçün nəzərdə tutulmuşdur.',
+      en: 'Designed for maximum energy return in every step.',
+      tr: 'Her adımda maksimum enerji dönüşü için tasarlandı.'
+    },
     brand: 'Adidas',
     brandSlug: 'adidas',
     image: adidas,
@@ -25,7 +34,16 @@ export const products = [
   },
   {
     id: 2,
-    name: "Air Force 1 '07",
+    name: {
+      az: "Air Force 1 '07",
+      en: "Air Force 1 '07",
+      tr: "Air Force 1 '07"
+    },
+    description: {
+      az: 'Klassik basketbol stili, gündəlik istifadə üçün yeniləndi.',
+      en: 'Classic basketball style updated for everyday wear.',
+      tr: 'Günlük kullanım için yenilenen klasik basketbol stili.'
+    },
     brand: 'Nike',
     brandSlug: 'nike',
     image: nike,
@@ -41,7 +59,16 @@ export const products = [
   },
   {
     id: 3,
-    name: 'Oversized Wool Coat',
+    name: {
+      az: 'Oversize Yun Palto',
+      en: 'Oversized Wool Coat',
+      tr: 'Oversize Yün Kaban'
+    },
+    description: {
+      az: 'Soyuq havalar üçün isti və şık seçim.',
+      en: 'Warm and stylish choice for cold weather.',
+      tr: 'Soğuk havalar için sıcak ve şık seçim.'
+    },
     brand: 'Zara',
     brandSlug: 'zara',
     image: zara,
@@ -56,7 +83,16 @@ export const products = [
   },
   {
     id: 4,
-    name: 'Wide-leg Jeans',
+    name: {
+      az: 'Geniş Balaq Cins',
+      en: 'Wide-leg Jeans',
+      tr: 'Geniş Paça Kot Pantolon'
+    },
+    description: {
+      az: 'Yüksək belli, rahat və modern görünüş.',
+      en: 'High-waisted, comfortable and modern look.',
+      tr: 'Yüksek belli, rahat ve modern görünüm.'
+    },
     brand: 'Bershka',
     brandSlug: 'bershka',
     image: bershka,
@@ -73,7 +109,16 @@ export const products = [
   },
   {
     id: 5,
-    name: 'Slim Fit Cotton Shirt',
+    name: {
+      az: 'Slim Fit Pambıq Köynək',
+      en: 'Slim Fit Cotton Shirt',
+      tr: 'Slim Fit Pamuklu Gömlek'
+    },
+    description: {
+      az: 'Rəsmi və gündəlik geyim üçün ideal seçim.',
+      en: 'Ideal choice for formal and casual wear.',
+      tr: 'Resmi ve günlük giyim için ideal seçim.'
+    },
     brand: 'Massimo Dutti',
     brandSlug: 'massimo-dutti',
     image: massimo,
@@ -88,7 +133,16 @@ export const products = [
   },
   {
     id: 6,
-    name: 'Coco Mademoiselle',
+    name: {
+      az: 'Coco Mademoiselle',
+      en: 'Coco Mademoiselle',
+      tr: 'Coco Mademoiselle'
+    },
+    description: {
+      az: 'Qadınlar üçün şərq qoxulu, təravətli ətir.',
+      en: 'Oriental, fresh fragrance for women.',
+      tr: 'Kadınlar için oryantal, taze bir koku.'
+    },
     brand: 'Chanel',
     brandSlug: 'chanel',
     image: chanel,
@@ -104,7 +158,16 @@ export const products = [
   },
   {
     id: 7,
-    name: 'Tech Fleece Hoodie',
+    name: {
+      az: 'Tech Fleece Hudi',
+      en: 'Tech Fleece Hoodie',
+      tr: 'Tech Fleece Kapüşonlu Üst'
+    },
+    description: {
+      az: 'Yüngül çəkidə istilik və müasir stil.',
+      en: 'Lightweight warmth and modern style.',
+      tr: 'Hafif sıcaklık ve modern tarz.'
+    },
     brand: 'Nike',
     brandSlug: 'nike',
     image: nike,
@@ -118,7 +181,16 @@ export const products = [
   },
   {
     id: 8,
-    name: 'Forum Low Shoes',
+    name: {
+      az: 'Forum Low Ayaqqabı',
+      en: 'Forum Low Shoes',
+      tr: 'Forum Low Ayakkabı'
+    },
+    description: {
+      az: '80-ci illərin basketbol ikonu, uşaqlar üçün.',
+      en: "80's basketball icon, for kids.",
+      tr: "Çocuklar için 80'lerin basketbol ikonu."
+    },
     brand: 'Adidas',
     brandSlug: 'adidas',
     image: adidas,
@@ -133,7 +205,16 @@ export const products = [
   },
   {
     id: 9,
-    name: 'Printed Midi Dress',
+    name: {
+      az: 'Naxışlı Midi Don',
+      en: 'Printed Midi Dress',
+      tr: 'Desenli Midi Elbise'
+    },
+    description: {
+      az: 'Zərif naxışlarla bəzədilmiş axıcı parça.',
+      en: 'Flowy fabric adorned with elegant patterns.',
+      tr: 'Zarif desenlerle süslenmiş akıcı kumaş.'
+    },
     brand: 'Zara',
     brandSlug: 'zara',
     image: zara,
@@ -148,7 +229,16 @@ export const products = [
   },
   {
     id: 10,
-    name: 'Air Max 90',
+    name: {
+      az: 'Air Max 90',
+      en: 'Air Max 90',
+      tr: 'Air Max 90'
+    },
+    description: {
+      az: 'Rahatlıq və irs, gənc nəsil üçün.',
+      en: 'Comfort and heritage, for the younger generation.',
+      tr: 'Genç nesil için konfor ve miras.'
+    },
     brand: 'Nike',
     brandSlug: 'nike',
     image: nike,
@@ -163,7 +253,16 @@ export const products = [
   },
   {
     id: 11,
-    name: 'Linen Blazer',
+    name: {
+      az: 'Kətan Pencək',
+      en: 'Linen Blazer',
+      tr: 'Keten Ceket'
+    },
+    description: {
+      az: 'Yaz ayları üçün yüngül və nəfəs alan kətan.',
+      en: 'Lightweight and breathable linen for summer months.',
+      tr: 'Yaz ayları için hafif ve nefes alan keten.'
+    },
     brand: 'Massimo Dutti',
     brandSlug: 'massimo-dutti',
     image: massimo,
@@ -179,7 +278,16 @@ export const products = [
   },
   {
     id: 12,
-    name: 'Bleu de Chanel',
+    name: {
+      az: 'Bleu de Chanel',
+      en: 'Bleu de Chanel',
+      tr: 'Bleu de Chanel'
+    },
+    description: {
+      az: 'Kişilər üçün aromatik-odunsu ətir.',
+      en: 'Aromatic-woody fragrance for men.',
+      tr: 'Erkekler için aromatik-odunsu koku.'
+    },
     brand: 'Chanel',
     brandSlug: 'chanel',
     image: chanel,

@@ -9,6 +9,9 @@
     "cart": "Səbət",
     "favorites": "Sevimli"
   },
+  "topbar": {
+    "deliveryMessage": "5-10 gün içərisində qarantili və sürətli çatdırılma"
+  },
   "menu": {
     "mens": "Kişi geyimi",
     "womens": "Qadın geyimi",
@@ -17,6 +20,9 @@
     "electronics": "Elektronika",
     "discount": "Endirim",
     "all": "Bütün məhsullar"
+  },
+  "footer": {
+    "copyright": "© {{year}} Brendoo. Bütün hüquqlar qorunur."
   },
   "product": {
     "new": "Yeni",
@@ -78,6 +84,10 @@
     "empty": "Sevimlilər siyahısı boşdur",
     "viewProducts": "Məhsullara bax"
   },
+  "influencers": {
+    "title": "Bizi Seçən İnfluencerlər",
+    "followers": "İzləyici"
+  },
   "login": {
     "welcome": "Xoş gəldiniz!",
     "subtitle": "Davam etmək üçün hesabınıza daxil olun",
@@ -128,5 +138,17 @@
     "noProducts": "Heç bir məhsul tapılmadı",
     "noProductsDesc": "Axtarış kriteriyalarınıza uyğun gələn məhsul yoxdur. Filtrləri təmizləyərək yenidən cəhd edin.",
     "showAll": "Bütün məhsulları göstər"
+  },
+  "checkout": {
+    "title": "Ödəniş",
+    "description": "Ödəniş və ünvan məlumatları burada doldurulacaq."
+  },
+  "register": {
+    "title": "Qeydiyyat",
+    "description": "Qeydiyyat forması burada olacaq."
+  },
+  "dashboard": {
+    "title": "İdarəetmə Paneli",
+    "description": "Bu sahə yalnız daxil olmuş istifadəçilər üçündür."
   }
 }

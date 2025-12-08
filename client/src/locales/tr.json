@@ -9,14 +9,20 @@
     "cart": "Sepet",
     "favorites": "Favoriler"
   },
+  "topbar": {
+    "deliveryMessage": "5-10 gün içerisinde garantili ve hızlı teslimat"
+  },
   "menu": {
     "mens": "Erkek Giyim",
     "womens": "Kadın Giyim",
     "kids": "Çocuk Giyim",
-    "beauty": "Güzellik & Kozmetik",
+    "beauty": "Parfüm ve Kozmetik",
     "electronics": "Elektronik",
     "discount": "İndirim",
     "all": "Tüm Ürünler"
+  },
+  "footer": {
+    "copyright": "© {{year}} Brendoo. Tüm hakları saklıdır."
   },
   "product": {
     "new": "Yeni",
@@ -78,6 +84,10 @@
     "empty": "Favori listeniz boş",
     "viewProducts": "Ürünlere Göz At"
   },
+  "influencers": {
+    "title": "Bizi Seçen İnfluencerlar",
+    "followers": "Takipçi"
+  },
   "login": {
     "welcome": "Hoş Geldiniz!",
     "subtitle": "Devam etmek için hesabınıza giriş yapın",
@@ -128,5 +138,17 @@
     "noProducts": "Ürün bulunamadı",
     "noProductsDesc": "Arama kriterlerinize uygun ürün bulunamadı. Filtreleri temizleyerek tekrar deneyin.",
     "showAll": "Tüm ürünleri göster"
+  },
+  "checkout": {
+    "title": "Ödeme",
+    "description": "Ödeme ve adres bilgileri burada doldurulacak."
+  },
+  "register": {
+    "title": "Kayıt Ol",
+    "description": "Yeni kullanıcı kaydı için form gelecek."
+  },
+  "dashboard": {
+    "title": "Kontrol Paneli",
+    "description": "Bu alan sadece giriş yapmış kullanıcılar için."
   }
 }
