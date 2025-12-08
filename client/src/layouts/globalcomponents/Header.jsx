@@ -1,12 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { User, Heart, Search } from 'lucide-react'
+import { User, Heart, Search, LogOut } from 'lucide-react'
+import { useAuth } from '@/context/AuthContext'
 import Topbar from './Topbar'
 import Navbar from './Navbar'
 import Cart from './Cart'
 import FavoritesDrawer from './FavoritesDrawer'
 
 const Header = () => {
+  const { user, logout, isAuthenticated } = useAuth()
+
   return (
     <div className="border-b border-gray-100">
       <Topbar />
@@ -28,9 +31,30 @@ const Header = () => {
         </div>
 
         <div className='flex items-center gap-2'>
-          <Link to='/login' className='flex items-center gap-1 hover:text-blue-600'>
-            <User size={50} className='bg-gray-600 text-white p-2 rounded-[10px]' />
-          </Link>
+          {isAuthenticated ? (
+            <div className="flex items-center gap-3 pl-2 border-l border-gray-200">
+              <div className="flex items-center gap-2">
+                <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-lg">
+                  {user?.name?.charAt(0).toUpperCase() || 'U'}
+                </div>
+                <div className="hidden md:block">
+                  <p className="text-sm font-bold text-gray-900 leading-none">{user?.name}</p>
+                  <p className="text-xs text-gray-500">Hesabım</p>
+                </div>
+              </div>
+              <button 
+                onClick={logout}
+                className="p-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                title="Çıxış et"
+              >
+                <LogOut size={20} />
+              </button>
+            </div>
+          ) : (
+            <Link to='/login' className='flex items-center gap-1 hover:text-blue-600'>
+              <User size={50} className='bg-gray-600 text-white p-2 rounded-[10px]' />
+            </Link>
+          )}
           <FavoritesDrawer />
           <Cart />
         </div>

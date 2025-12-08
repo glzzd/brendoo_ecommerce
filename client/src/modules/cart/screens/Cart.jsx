@@ -1,10 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useCart } from '@/context/CartContext'
+import { useAuth } from '@/context/AuthContext'
 import { Trash2, Plus, Minus, ArrowLeft, ShoppingBag } from 'lucide-react'
 
 const Cart = () => {
   const { cartItems, removeFromCart, updateQuantity, clearCart } = useCart()
+  const { isAuthenticated } = useAuth()
+  const navigate = useNavigate()
 
   const calculateTotal = () => {
     return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0)
@@ -138,12 +141,18 @@ const Cart = () => {
                 </div>
               </div>
 
-              <Link 
-                to="/checkout"
+              <button 
+                onClick={() => {
+                  if (isAuthenticated) {
+                    navigate('/checkout')
+                  } else {
+                    navigate('/login', { state: { from: { pathname: '/checkout' } } })
+                  }
+                }}
                 className="w-full py-4 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-blue-200"
               >
                 Sifarişi rəsmiləşdir
-              </Link>
+              </button>
               
               <p className="text-xs text-gray-400 text-center mt-4">
                 Təhlükəsiz ödəniş və sürətli çatdırılma zəmanəti

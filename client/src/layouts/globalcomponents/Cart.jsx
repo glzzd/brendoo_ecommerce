@@ -1,5 +1,7 @@
 import React from 'react'
 import { useCart } from '@/context/CartContext'
+import { useAuth } from '@/context/AuthContext'
+import { useNavigate } from 'react-router-dom'
 import { 
   Drawer, 
   DrawerContent, 
@@ -13,6 +15,8 @@ import { ShoppingCart, X, Minus, Plus, Trash2 } from 'lucide-react'
 
 const Cart = () => {
   const { cartItems, removeFromCart, updateQuantity, cartCount, clearCart } = useCart()
+  const { isAuthenticated } = useAuth()
+  const navigate = useNavigate()
 
   const calculateTotal = () => {
     return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2)
@@ -117,9 +121,20 @@ const Cart = () => {
                         <span className="text-2xl font-bold text-gray-900">${calculateTotal()}</span>
                     </div>
                     <div className="grid gap-3">
-                        <button className="w-full py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 active:scale-95 transition-all shadow-lg shadow-blue-200">
-                            Sifarişi rəsmiləşdir
-                        </button>
+                        <DrawerClose asChild>
+                            <button 
+                                onClick={() => {
+                                    if (isAuthenticated) {
+                                        navigate('/checkout')
+                                    } else {
+                                        navigate('/login', { state: { from: { pathname: '/checkout' } } })
+                                    }
+                                }}
+                                className="w-full py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 active:scale-95 transition-all shadow-lg shadow-blue-200"
+                            >
+                                Sifarişi rəsmiləşdir
+                            </button>
+                        </DrawerClose>
                         <button 
                             onClick={clearCart}
                             className="w-full py-3 bg-white text-gray-600 font-medium rounded-xl border border-gray-200 hover:bg-gray-50 hover:text-red-500 transition-colors"
