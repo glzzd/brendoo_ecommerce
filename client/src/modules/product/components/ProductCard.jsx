@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Heart, Eye, Star, Minus, Plus, Check, ShoppingBag, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Dialog, DialogContent, DialogTrigger, DialogTitle } from '../../../components/ui/dialog'
+import ProductQuickView from './ProductQuickView'
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 
 const ProductCard = ({ 
   product, 
@@ -12,6 +15,7 @@ const ProductCard = ({
   onAddToCart 
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [isQuickViewOpen, setIsQuickViewOpen] = useState(false)
   
   // Use images array if available, otherwise fallback to single image
   const images = product.images && product.images.length > 0 ? product.images : [product.image]
@@ -94,9 +98,35 @@ const ProductCard = ({
           >
             <Heart size={18} className={isFavorite ? 'fill-current' : ''} />
           </button>
-          <button className="w-9 h-9 bg-white rounded-full flex items-center justify-center shadow-lg text-gray-400 hover:text-blue-600 hover:scale-110 transition-all duration-300 delay-75">
-            <Eye size={18} />
-          </button>
+          
+          <Dialog open={isQuickViewOpen} onOpenChange={setIsQuickViewOpen}>
+            <DialogTrigger asChild>
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation()
+                  // DialogTrigger handles the click, but we stop propagation to prevent navigation
+                }}
+                className="w-9 h-9 bg-white rounded-full flex items-center justify-center shadow-lg text-gray-400 hover:text-blue-600 hover:scale-110 transition-all duration-300 delay-75"
+              >
+                <Eye size={18} />
+              </button>
+            </DialogTrigger>
+            <DialogContent className="min-w-7xl w-[95vw] h-[90vh] p-0 overflow-hidden flex flex-col bg-white rounded-2xl border-none shadow-2xl">
+              <VisuallyHidden>
+                <DialogTitle>{product.name}</DialogTitle>
+              </VisuallyHidden>
+              <div className="flex-1 h-full overflow-hidden p-6 md:p-10">
+                <ProductQuickView 
+                  product={product}
+                  quantity={quantity}
+                  onUpdateQuantity={onUpdateQuantity}
+                  isAddedToCart={isAddedToCart}
+                  onAddToCart={onAddToCart}
+                  onClose={() => setIsQuickViewOpen(false)}
+                />
+              </div>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
 

@@ -47,7 +47,7 @@ const ProductList = () => {
   
   // Pagination State
   const [page, setPage] = useState(1)
-  const ITEMS_PER_PAGE = 12
+  const ITEMS_PER_PAGE = 15
   const observerTarget = useRef(null)
 
   // Cart interaction states
