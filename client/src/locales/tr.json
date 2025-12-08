@@ -1,0 +1,132 @@
+{
+  "common": {
+    "home": "Ana Sayfa",
+    "search": "Ara...",
+    "searchBtn": "Ara",
+    "account": "Hesabım",
+    "logout": "Çıkış Yap",
+    "login": "Giriş Yap",
+    "cart": "Sepet",
+    "favorites": "Favoriler"
+  },
+  "menu": {
+    "mens": "Erkek Giyim",
+    "womens": "Kadın Giyim",
+    "kids": "Çocuk Giyim",
+    "beauty": "Güzellik & Kozmetik",
+    "electronics": "Elektronik",
+    "discount": "İndirim",
+    "all": "Tüm Ürünler"
+  },
+  "product": {
+    "new": "Yeni",
+    "top": "Top",
+    "added": "Eklendi",
+    "addToCart": "Sepete Ekle",
+    "review": "değerlendirme",
+    "viewDetails": "Ürünün tüm detaylarını gör",
+    "description": "Bu ürün yüksek kaliteli malzemelerden yapılmıştır. Günlük kullanım için idealdir ve rahatlığı ile öne çıkar. {{brand}} kalitesiyle.",
+    "discountOff": "İndirim",
+    "notFound": "Ürün bulunamadı",
+    "returnToProducts": "Ürünlere dön",
+    "bestSeller": "Çok Satan",
+    "views": "görüntülenme",
+    "features": {
+      "delivery": { "title": "Teslimat", "value": "Ücretsiz Teslimat" },
+      "warranty": { "title": "Garanti", "value": "Orijinal Ürün" },
+      "return": { "title": "İade", "value": "30 Gün İade" }
+    },
+    "tabs": {
+      "about": "Ürün Hakkında",
+      "specs": "Özellikler",
+      "reviews": "Değerlendirmeler"
+    },
+    "reviews": {
+      "empty": "Henüz değerlendirme yok."
+    },
+    "similarProducts": "Benzer Ürünler",
+    "specs": {
+      "brand": "Marka",
+      "category": "Kategori",
+      "material": "Materyal",
+      "season": "Sezon",
+      "allSeasons": "Tüm Sezonlar"
+    },
+    "descriptionList": {
+      "material": "Yüksek kaliteli materyal",
+      "design": "Rahat ve şık tasarım",
+      "usage": "Uzun ömürlü kullanım",
+      "cleaning": "Kolay temizlenebilir"
+    }
+  },
+  "cart": {
+    "title": "Sepetiniz",
+    "empty": "Sepetiniz boş",
+    "continueShopping": "Alışverişe Devam Et",
+    "total": "Toplam",
+    "checkout": "Siparişi Tamamla",
+    "clear": "Sepeti Temizle",
+    "summary": "Sipariş Özeti",
+    "shipping": "Kargo",
+    "free": "Ücretsiz",
+    "products": "Ürünler",
+    "secure": "Güvenli ödeme ve hızlı teslimat garantisi",
+    "emptyMessage": "Henüz sepetinize hiç ürün eklemediniz. Alışverişe başlamak için ana sayfaya gidin."
+  },
+  "favorites": {
+    "title": "Favoriler",
+    "empty": "Favori listeniz boş",
+    "viewProducts": "Ürünlere Göz At"
+  },
+  "login": {
+    "welcome": "Hoş Geldiniz!",
+    "subtitle": "Devam etmek için hesabınıza giriş yapın",
+    "emailLabel": "E-posta Adresi",
+    "emailPlaceholder": "ornek@email.com",
+    "passwordLabel": "Şifre",
+    "forgotPassword": "Şifrenizi mi unuttunuz?",
+    "loggingIn": "Giriş yapılıyor...",
+    "submit": "Giriş Yap",
+    "noAccount": "Hesabınız yok mu?",
+    "register": "Kayıt Ol",
+    "copyright": "Tüm hakları saklıdır."
+  },
+  "home": {
+    "mostViewed": "En Çok İlgilenilenler",
+    "mostViewedSubtitle": "Brendoo'nun en popüler ürünlerini keşfedin",
+    "discounted": "İndirimli Ürünler",
+    "discountedSubtitle": "Muhteşem indirimleri kaçırmayın",
+    "newArrivals": "Yeni Ürünler",
+    "newArrivalsSubtitle": "En son eklenen ürünleri keşfedin",
+    "partnerBrands": "Partner Markalar"
+  },
+  "shop": {
+    "filters": "Filtreler",
+    "productCount": "{{count}} ürün",
+    "status": "Durum",
+    "newArrivalsFilter": "Yeni gelenler",
+    "discountedFilter": "İndirimli",
+    "priceRange": "Fiyat Aralığı",
+    "category": "Kategori",
+    "brands": "Markalar",
+    "showResults": "Sonuçları göster ({{count}})",
+    "allProducts": "Tüm Ürünler",
+    "discountedProducts": "İndirimli Ürünler",
+    "newArrivalsProducts": "Yeni Gelen Ürünler",
+    "productsFound": "{{count}} ürün bulundu",
+    "sortBy": {
+      "newest": "En yeni",
+      "oldest": "En eski",
+      "priceLowHigh": "Artan fiyat",
+      "priceHighLow": "Azalan fiyat",
+      "popularityDesc": "En popüler",
+      "popularityAsc": "En az popüler",
+      "az": "A'dan Z'ye",
+      "za": "Z'den A'ya"
+    },
+    "clear": "Temizle",
+    "noProducts": "Ürün bulunamadı",
+    "noProductsDesc": "Arama kriterlerinize uygun ürün bulunamadı. Filtreleri temizleyerek tekrar deneyin.",
+    "showAll": "Tüm ürünleri göster"
+  }
+}

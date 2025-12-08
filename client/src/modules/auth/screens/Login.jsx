@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../../context/AuthContext';
 import { useCart } from '../../../context/CartContext';
 import { Mail, Lock, ArrowRight, Loader2, User } from 'lucide-react';
 
 function Login() {
+  const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -66,9 +68,9 @@ function Login() {
             <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 transform rotate-3">
               <User size={32} />
             </div>
-            <h2 className="text-3xl font-bold text-gray-900 tracking-tight mb-2">Xoş gəldiniz!</h2>
+            <h2 className="text-3xl font-bold text-gray-900 tracking-tight mb-2">{t('login.welcome')}</h2>
             <p className="text-gray-500">
-              Davam etmək üçün hesabınıza daxil olun
+              {t('login.subtitle')}
             </p>
           </div>
           
@@ -79,7 +81,7 @@ function Login() {
                 {/* Email Input */}
                 <div className="group">
                   <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-1.5 ml-1">
-                    Email ünvanı
+                    {t('login.emailLabel')}
                   </label>
                   <div className="relative transition-all duration-300 focus-within:scale-[1.01]">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-blue-500 transition-colors">
@@ -93,7 +95,7 @@ function Login() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       className="block w-full pl-11 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-100 focus:border-blue-500 transition-all outline-none placeholder:text-gray-400 font-medium"
-                      placeholder="nümunə@email.com"
+                      placeholder={t('login.emailPlaceholder')}
                     />
                   </div>
                 </div>
@@ -102,10 +104,10 @@ function Login() {
                 <div className="group">
                   <div className="flex justify-between items-center mb-1.5 ml-1">
                     <label htmlFor="password" className="block text-sm font-semibold text-gray-700">
-                      Şifrə
+                      {t('login.passwordLabel')}
                     </label>
                     <Link to="/forgot-password" className="text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">
-                      Şifrəni unutmusunuz?
+                      {t('login.forgotPassword')}
                     </Link>
                   </div>
                   <div className="relative transition-all duration-300 focus-within:scale-[1.01]">
@@ -135,11 +137,11 @@ function Login() {
                 {isLoading ? (
                   <>
                     <Loader2 size={20} className="animate-spin mr-2" />
-                    Giriş edilir...
+                    {t('login.loggingIn')}
                   </>
                 ) : (
                   <>
-                    Daxil ol
+                    {t('login.submit')}
                     <ArrowRight size={20} className="ml-2" />
                   </>
                 )}
@@ -148,9 +150,9 @@ function Login() {
               {/* Register Link */}
               <div className="text-center mt-6">
                 <p className="text-sm text-gray-600">
-                  Hesabınız yoxdur?{' '}
+                  {t('login.noAccount')}{' '}
                   <Link to="/register" className="font-bold text-blue-600 hover:text-blue-700 hover:underline transition-all">
-                    Qeydiyyatdan keçin
+                    {t('login.register')}
                   </Link>
                 </p>
               </div>
@@ -160,7 +162,7 @@ function Login() {
         
         {/* Footer info */}
         <p className="text-center text-xs text-gray-400 mt-8">
-          &copy; {new Date().getFullYear()} Brendoo. Bütün hüquqlar qorunur.
+          &copy; {new Date().getFullYear()} Brendoo. {t('login.copyright')}
         </p>
       </div>
     </div>

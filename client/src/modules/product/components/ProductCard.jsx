@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { Heart, Eye, Star, Minus, Plus, Check, ShoppingBag, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Dialog, DialogContent, DialogTrigger, DialogTitle } from '../../../components/ui/dialog'
 import ProductQuickView from './ProductQuickView'
@@ -8,6 +9,7 @@ import { useCart } from '../../../context/CartContext'
 import { useFavorites } from '../../../context/FavoritesContext'
 
 const ProductCard = ({ product }) => {
+  const { t } = useTranslation()
   const { addToCart, cartItems } = useCart()
   const { favorites, toggleFavorite } = useFavorites()
   
@@ -95,10 +97,10 @@ const ProductCard = ({ product }) => {
         {/* Badges */}
         <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
           {product.isNew && (
-            <span className="px-2.5 py-1 bg-blue-600 text-white text-[10px] font-bold tracking-wider uppercase rounded shadow-sm shadow-blue-200">Yeni</span>
+            <span className="px-2.5 py-1 bg-blue-600 text-white text-[10px] font-bold tracking-wider uppercase rounded shadow-sm shadow-blue-200">{t('product.new')}</span>
           )}
           {product.isBestSeller && (
-            <span className="px-2.5 py-1 bg-amber-500 text-white text-[10px] font-bold tracking-wider uppercase rounded shadow-sm shadow-amber-200">Top</span>
+            <span className="px-2.5 py-1 bg-amber-500 text-white text-[10px] font-bold tracking-wider uppercase rounded shadow-sm shadow-amber-200">{t('product.top')}</span>
           )}
           {product.discount && (
             <span className="px-2.5 py-1 bg-red-500 text-white text-[10px] font-bold tracking-wider uppercase rounded shadow-sm shadow-red-200">-{product.discount}%</span>
@@ -138,7 +140,7 @@ const ProductCard = ({ product }) => {
                 <ProductQuickView 
                   product={product}
                   quantity={quantity}
-                  onUpdateQuantity={(delta) => setQuantity(prev => Math.max(1, prev + delta))}
+                  onUpdateQuantity={(e, id, delta) => setQuantity(prev => Math.max(1, prev + delta))}
                   isAddedToCart={isInCart}
                   onAddToCart={() => {
                     addToCart(product, quantity)
@@ -217,12 +219,12 @@ const ProductCard = ({ product }) => {
                 {(isAdded || isInCart) ? (
                     <>
                       <Check size={16} />
-                      <span className="text-xs font-bold">Əlavə edildi</span>
+                      <span className="text-xs font-bold">{t('product.added')}</span>
                     </>
                 ) : (
                    <div className='flex items-center justify-center gap-2'>
                     <ShoppingBag size={15} /> <span className='text-xs font-bold'>
-                      Səbətə əlavə et 
+                      {t('product.addToCart')}
                       </span>
                     </div>
                 )}

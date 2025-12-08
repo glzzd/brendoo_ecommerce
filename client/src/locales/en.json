@@ -1,0 +1,132 @@
+{
+  "common": {
+    "home": "Home",
+    "search": "Search...",
+    "searchBtn": "Search",
+    "account": "My Account",
+    "logout": "Logout",
+    "login": "Login",
+    "cart": "Cart",
+    "favorites": "Favorites"
+  },
+  "menu": {
+    "mens": "Men's Clothing",
+    "womens": "Women's Clothing",
+    "kids": "Kids Clothing",
+    "beauty": "Beauty & Cosmetics",
+    "electronics": "Electronics",
+    "discount": "Sale",
+    "all": "All Products"
+  },
+  "product": {
+    "new": "New",
+    "top": "Top",
+    "added": "Added",
+    "addToCart": "Add to Cart",
+    "review": "reviews",
+    "viewDetails": "View full product details",
+    "description": "This product is made from high quality materials. It is ideal for daily use and is distinguished by its comfort. Quality guaranteed by {{brand}}.",
+    "discountOff": "Off",
+    "notFound": "Product not found",
+    "returnToProducts": "Return to products",
+    "bestSeller": "Best Seller",
+    "views": "views",
+    "features": {
+      "delivery": { "title": "Delivery", "value": "Free Delivery" },
+      "warranty": { "title": "Warranty", "value": "Original Product" },
+      "return": { "title": "Return", "value": "30 Days Return" }
+    },
+    "tabs": {
+      "about": "About Product",
+      "specs": "Features",
+      "reviews": "Reviews"
+    },
+    "reviews": {
+      "empty": "No reviews yet."
+    },
+    "similarProducts": "Similar Products",
+    "specs": {
+      "brand": "Brand",
+      "category": "Category",
+      "material": "Material",
+      "season": "Season",
+      "allSeasons": "All Seasons"
+    },
+    "descriptionList": {
+      "material": "High quality material",
+      "design": "Comfortable and stylish design",
+      "usage": "Long-lasting use",
+      "cleaning": "Easy to clean"
+    }
+  },
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty",
+    "continueShopping": "Continue Shopping",
+    "total": "Total",
+    "checkout": "Checkout",
+    "clear": "Clear Cart",
+    "summary": "Order Summary",
+    "shipping": "Shipping",
+    "free": "Free",
+    "products": "Products",
+    "secure": "Secure payment and fast delivery guarantee",
+    "emptyMessage": "You haven't added any products to your cart yet. Go to the home page to start shopping."
+  },
+  "favorites": {
+    "title": "Favorites",
+    "empty": "Favorites list is empty",
+    "viewProducts": "View Products"
+  },
+  "login": {
+    "welcome": "Welcome back!",
+    "subtitle": "Sign in to continue to your account",
+    "emailLabel": "Email address",
+    "emailPlaceholder": "example@email.com",
+    "passwordLabel": "Password",
+    "forgotPassword": "Forgot password?",
+    "loggingIn": "Logging in...",
+    "submit": "Sign in",
+    "noAccount": "Don't have an account?",
+    "register": "Sign up",
+    "copyright": "All rights reserved."
+  },
+  "home": {
+    "mostViewed": "Most Viewed",
+    "mostViewedSubtitle": "Discover Brendoo's most popular products",
+    "discounted": "Discounted Products",
+    "discountedSubtitle": "Don't miss out on great discounts",
+    "newArrivals": "New Arrivals",
+    "newArrivalsSubtitle": "Discover the latest added products",
+    "partnerBrands": "Partner Brands"
+  },
+  "shop": {
+    "filters": "Filters",
+    "productCount": "{{count}} products",
+    "status": "Status",
+    "newArrivalsFilter": "New Arrivals",
+    "discountedFilter": "Discounted",
+    "priceRange": "Price Range",
+    "category": "Category",
+    "brands": "Brands",
+    "showResults": "Show results ({{count}})",
+    "allProducts": "All Products",
+    "discountedProducts": "Discounted Products",
+    "newArrivalsProducts": "New Arrival Products",
+    "productsFound": "{{count}} products found",
+    "sortBy": {
+      "newest": "Newest",
+      "oldest": "Oldest",
+      "priceLowHigh": "Price: Low to High",
+      "priceHighLow": "Price: High to Low",
+      "popularityDesc": "Most Popular",
+      "popularityAsc": "Least Popular",
+      "az": "A to Z",
+      "za": "Z to A"
+    },
+    "clear": "Clear",
+    "noProducts": "No products found",
+    "noProductsDesc": "No products found matching your search criteria. Try clearing filters.",
+    "showAll": "Show all products"
+  }
+}

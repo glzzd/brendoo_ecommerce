@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useCart } from '@/context/CartContext'
 import { useAuth } from '@/context/AuthContext'
 import { useNavigate } from 'react-router-dom'
@@ -14,6 +15,7 @@ import {
 import { ShoppingCart, X, Minus, Plus, Trash2 } from 'lucide-react'
 
 const Cart = () => {
+  const { t } = useTranslation()
   const { cartItems, removeFromCart, updateQuantity, cartCount, clearCart } = useCart()
   const { isAuthenticated } = useAuth()
   const navigate = useNavigate()
@@ -41,7 +43,7 @@ const Cart = () => {
         <div className="flex flex-col h-full">
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-gray-100">
-                <h2 className="text-lg font-bold text-gray-900">Səbətiniz ({cartCount} məhsul)</h2>
+                <h2 className="text-lg font-bold text-gray-900">{t('cart.title')} ({cartCount} {t('cart.products').toLowerCase()})</h2>
                 <DrawerClose className="p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-500">
                     <X size={20} />
                 </DrawerClose>
@@ -54,10 +56,10 @@ const Cart = () => {
                         <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center text-gray-400">
                             <ShoppingCart size={32} />
                         </div>
-                        <p className="font-medium">Səbətiniz boşdur</p>
+                        <p className="font-medium">{t('cart.empty')}</p>
                         <DrawerClose asChild>
                             <button className="text-blue-600 hover:underline text-sm">
-                                Alış-verişə davam et
+                                {t('cart.continueShopping')}
                             </button>
                         </DrawerClose>
                     </div>
@@ -117,7 +119,7 @@ const Cart = () => {
             {cartItems.length > 0 && (
                 <div className="p-4 border-t border-gray-100 bg-gray-50">
                     <div className="flex justify-between items-center mb-4">
-                        <span className="text-gray-500 font-medium">Ümumi məbləğ:</span>
+                        <span className="text-gray-500 font-medium">{t('cart.total')}:</span>
                         <span className="text-2xl font-bold text-gray-900">${calculateTotal()}</span>
                     </div>
                     <div className="grid gap-3">
@@ -132,14 +134,14 @@ const Cart = () => {
                                 }}
                                 className="w-full py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 active:scale-95 transition-all shadow-lg shadow-blue-200"
                             >
-                                Sifarişi rəsmiləşdir
+                                {t('cart.checkout')}
                             </button>
                         </DrawerClose>
                         <button 
                             onClick={clearCart}
                             className="w-full py-3 bg-white text-gray-600 font-medium rounded-xl border border-gray-200 hover:bg-gray-50 hover:text-red-500 transition-colors"
                         >
-                            Səbəti təmizlə
+                            {t('cart.clear')}
                         </button>
                     </div>
                 </div>

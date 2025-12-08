@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Star, Minus, Plus, Check, ShoppingBag, ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
@@ -10,6 +11,7 @@ const ProductQuickView = ({
   onAddToCart,
   onClose
 }) => {
+  const { t } = useTranslation()
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   
   // Use images array if available, otherwise fallback to single image
@@ -91,7 +93,7 @@ const ProductQuickView = ({
                     <Star key={i} size={16} className={i < Math.floor(product.rating) ? "fill-current" : "text-gray-200 fill-current"} />
                     ))}
                 </div>
-                <span className="text-sm font-medium text-gray-500">({product.reviewCount} dəyərləndirmə)</span>
+                <span className="text-sm font-medium text-gray-500">({product.reviewCount} {t('product.review')})</span>
             </div>
 
             {/* Price */}
@@ -102,13 +104,13 @@ const ProductQuickView = ({
                 )}
                 {product.discount && (
                     <span className="px-2 py-1 bg-red-100 text-red-700 text-xs font-bold rounded mb-1">
-                        -{product.discount}% Endirim
+                        -{product.discount}% {t('product.discountOff')}
                     </span>
                 )}
             </div>
 
             <p className="text-gray-600 leading-relaxed mb-8">
-                Bu məhsul yüksək keyfiyyətli materiallardan hazırlanmışdır. Gündəlik istifadə üçün idealdır və rahatlığı ilə seçilir. {product.brand} markasının keyfiyyət zəmanəti ilə.
+                {t('product.description', { brand: product.brand })}
             </p>
 
             {/* Actions */}
@@ -145,12 +147,12 @@ const ProductQuickView = ({
                     {isAddedToCart ? (
                         <>
                             <Check size={20} />
-                            <span>Səbətə əlavə edildi</span>
+                            <span>{t('product.added')}</span>
                         </>
                     ) : (
                         <>
                             <ShoppingBag size={20} />
-                            <span>Səbətə əlavə et</span>
+                            <span>{t('product.addToCart')}</span>
                         </>
                     )}
                 </button>
@@ -163,7 +165,7 @@ const ProductQuickView = ({
                 className="text-sm font-semibold text-gray-900 hover:text-blue-600 hover:underline transition-colors flex items-center gap-1"
                 onClick={onClose}
              >
-                Məhsulun bütün detallarına bax
+                {t('product.viewDetails')}
                 <ChevronRight size={14} />
              </Link>
         </div>

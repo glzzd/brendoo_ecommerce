@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { useCart } from '@/context/CartContext'
 import { useAuth } from '@/context/AuthContext'
 import { Trash2, Plus, Minus, ArrowLeft, ShoppingBag } from 'lucide-react'
 
 const Cart = () => {
+  const { t } = useTranslation()
   const { cartItems, removeFromCart, updateQuantity, clearCart } = useCart()
   const { isAuthenticated } = useAuth()
   const navigate = useNavigate()
@@ -21,16 +23,16 @@ const Cart = () => {
         <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-6">
           <ShoppingBag size={40} className="text-gray-400" />
         </div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">Səbətiniz boşdur</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">{t('cart.empty')}</h2>
         <p className="text-gray-500 mb-8 text-center max-w-md">
-          Hələ səbətinizə heç bir məhsul əlavə etməmisiniz. Alış-verişə başlamaq üçün ana səhifəyə keçin.
+          {t('cart.emptyMessage')}
         </p>
         <Link 
           to="/" 
           className="px-8 py-3 bg-blue-600 text-white rounded-xl font-medium hover:bg-blue-700 transition-colors flex items-center gap-2"
         >
           <ArrowLeft size={20} />
-          Alış-verişə davam et
+          {t('cart.continueShopping')}
         </Link>
       </div>
     )
@@ -39,7 +41,7 @@ const Cart = () => {
   return (
     <div className="py-8 bg-gray-50 min-h-screen">
       <div className="container mx-auto px-4">
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">Səbət ({cartItems.length} məhsul)</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-8">{t('cart.title')} ({cartItems.length} {t('cart.products').toLowerCase()})</h1>
         
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Cart Items List */}
@@ -116,7 +118,7 @@ const Cart = () => {
                     className="text-red-500 hover:text-red-700 text-sm font-medium flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-red-50 transition-colors"
                 >
                     <Trash2 size={16} />
-                    Səbəti təmizlə
+                    {t('cart.clear')}
                 </button>
             </div>
           </div>
@@ -124,19 +126,19 @@ const Cart = () => {
           {/* Summary Sidebar */}
           <div className="lg:w-96 shrink-0">
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sticky top-24">
-              <h3 className="text-lg font-bold text-gray-900 mb-6">Sifariş xülasəsi</h3>
+              <h3 className="text-lg font-bold text-gray-900 mb-6">{t('cart.summary')}</h3>
               
               <div className="space-y-4 mb-6">
                 <div className="flex justify-between text-gray-600">
-                  <span>Məhsullar ({cartItems.reduce((acc, item) => acc + item.quantity, 0)})</span>
+                  <span>{t('cart.products')} ({cartItems.reduce((acc, item) => acc + item.quantity, 0)})</span>
                   <span className="font-medium">${total.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between text-gray-600">
-                  <span>Çatdırılma</span>
-                  <span className="font-medium text-green-600">Pulsuz</span>
+                  <span>{t('cart.shipping')}</span>
+                  <span className="font-medium text-green-600">{t('cart.free')}</span>
                 </div>
                 <div className="border-t border-gray-100 pt-4 flex justify-between text-lg font-bold text-gray-900">
-                  <span>Cəmi</span>
+                  <span>{t('cart.total')}</span>
                   <span>${total.toFixed(2)}</span>
                 </div>
               </div>
@@ -151,11 +153,11 @@ const Cart = () => {
                 }}
                 className="w-full py-4 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-blue-200"
               >
-                Sifarişi rəsmiləşdir
+                {t('cart.checkout')}
               </button>
               
               <p className="text-xs text-gray-400 text-center mt-4">
-                Təhlükəsiz ödəniş və sürətli çatdırılma zəmanəti
+                {t('cart.secure')}
               </p>
             </div>
           </div>

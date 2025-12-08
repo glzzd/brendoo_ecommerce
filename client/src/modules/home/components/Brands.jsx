@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { brands } from '@/demoDatas/brands'
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 
 const Brands = () => {
+  const { t } = useTranslation()
   // Demo üçün brendləri artırırıq
   const allBrands = [...brands, ...brands, ...brands]
   
@@ -24,7 +26,7 @@ const Brands = () => {
     <section className="py-12 bg-white">
       <div className="container mx-auto px-6">
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-2xl font-bold text-gray-900">Partnyor brendlər</h2>
+          <h2 className="text-2xl font-bold text-gray-900">{t('home.partnerBrands')}</h2>
           <div className="flex items-center gap-4">
             <div className="flex gap-2">
                 <button 
@@ -60,7 +62,7 @@ const Brands = () => {
                 />
               </div>
               <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">{brand.name}</h3>
-              <span className="text-xs text-gray-500 mt-1">{brand.productCount} məhsul</span>
+              <span className="text-xs text-gray-500 mt-1">{t('shop.productCount', { count: brand.productCount })}</span>
             </Link>
           ))}
         </div>

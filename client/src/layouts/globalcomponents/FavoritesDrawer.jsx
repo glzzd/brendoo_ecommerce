@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useFavorites } from '@/context/FavoritesContext'
 import { useCart } from '@/context/CartContext'
 import { 
@@ -10,6 +11,7 @@ import {
 import { Heart, X, ShoppingCart, Trash2 } from 'lucide-react'
 
 const FavoritesDrawer = () => {
+  const { t } = useTranslation()
   const { favorites, removeFromFavorites, favoritesCount } = useFavorites()
   const { addToCart } = useCart()
 
@@ -32,7 +34,7 @@ const FavoritesDrawer = () => {
         <div className="flex flex-col h-full">
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-gray-100">
-                <h2 className="text-lg font-bold text-gray-900">Sevimlilər ({favoritesCount})</h2>
+                <h2 className="text-lg font-bold text-gray-900">{t('favorites.title')} ({favoritesCount})</h2>
                 <DrawerClose className="p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-500">
                     <X size={20} />
                 </DrawerClose>
@@ -45,10 +47,10 @@ const FavoritesDrawer = () => {
                         <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center text-gray-400">
                             <Heart size={32} />
                         </div>
-                        <p className="font-medium">Sevimlilər siyahısı boşdur</p>
+                        <p className="font-medium">{t('favorites.empty')}</p>
                         <DrawerClose asChild>
                             <button className="text-blue-600 hover:underline text-sm">
-                                Məhsullara bax
+                                {t('favorites.viewProducts')}
                             </button>
                         </DrawerClose>
                     </div>

@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react'
 import { useParams, Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { Filter, ChevronDown, ChevronLeft, ChevronRight, X, SlidersHorizontal, ChevronUp } from 'lucide-react'
 import ProductCard from '../components/ProductCard'
 import { products } from '@/demoDatas/products'
@@ -30,6 +31,7 @@ const FilterSection = ({ title, children, isOpenDefault = true }) => {
 }
 
 const ProductList = () => {
+  const { t } = useTranslation()
   const { category } = useParams()
   
   // States
@@ -54,14 +56,14 @@ const ProductList = () => {
 
   // Category Title Logic
   const categoryTitle = useMemo(() => {
-    if (!category) return 'Bütün Məhsullar'
-    if (category === 'butun-mehsullar') return 'Bütün Məhsullar'
-    if (category === 'endirim') return 'Endirimli Məhsullar'
-    if (category === 'new-arrivals') return 'Yeni Gələn Məhsullar'
+    if (!category) return t('shop.allProducts')
+    if (category === 'butun-mehsullar') return t('shop.allProducts')
+    if (category === 'endirim') return t('shop.discountedProducts')
+    if (category === 'new-arrivals') return t('shop.newArrivalsProducts')
     
     const menuItem = menuItems.find(item => item.link === `/shop/${category}`)
-    return menuItem ? menuItem.name : category.replace(/-/g, ' ')
-  }, [category])
+    return menuItem ? t(`menu.${menuItem.id}`) : category.replace(/-/g, ' ')
+  }, [category, t])
 
   // Filtering Logic
   const filteredProducts = useMemo(() => {
@@ -178,14 +180,14 @@ const ProductList = () => {
           className="flex items-center gap-2 font-semibold text-gray-800 bg-gray-100 px-4 py-2 rounded-lg active:scale-95 transition-transform"
         >
           <SlidersHorizontal size={18} />
-          Filtrlər
+          {t('shop.filters')}
           {(selectedBrands.length + selectedTypes.length + (onlyNew ? 1 : 0) + (onlyDiscount ? 1 : 0)) > 0 && (
             <span className="bg-blue-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
               {selectedBrands.length + selectedTypes.length + (onlyNew ? 1 : 0) + (onlyDiscount ? 1 : 0)}
             </span>
           )}
         </button>
-        <span className="text-sm font-medium text-gray-500">{sortedProducts.length} məhsul</span>
+        <span className="text-sm font-medium text-gray-500">{t('shop.productCount', { count: sortedProducts.length })}</span>
       </div>
 
       <div className="container mx-auto px-4 py-8 flex items-start gap-8 relative">
@@ -198,7 +200,7 @@ const ProductList = () => {
           <div className="flex flex-col h-full bg-white lg:rounded-2xl lg:shadow-sm lg:border lg:border-gray-100 overflow-hidden lg:overflow-y-auto custom-scrollbar">
             {/* Mobile Header */}
             <div className="flex justify-between items-center p-5 border-b lg:hidden">
-              <h2 className="text-xl font-bold text-gray-900">Filtrlər</h2>
+              <h2 className="text-xl font-bold text-gray-900">{t('shop.filters')}</h2>
               <button onClick={() => setMobileFiltersOpen(false)} className="p-2 hover:bg-gray-100 rounded-full transition-colors">
                 <X size={24} />
               </button>
@@ -207,27 +209,27 @@ const ProductList = () => {
             <div className="p-6 overflow-y-auto lg:overflow-visible flex-1 custom-scrollbar">
               {/* Status Filter */}
               <div className="pb-5 border-b border-gray-100">
-                <h3 className="font-semibold text-gray-900 text-sm uppercase tracking-wide mb-4">Status</h3>
+                <h3 className="font-semibold text-gray-900 text-sm uppercase tracking-wide mb-4">{t('shop.status')}</h3>
                 <div className="space-y-3">
                   <label className="flex items-center gap-3 cursor-pointer group">
                     <div className={`w-5 h-5 rounded border flex items-center justify-center transition-colors ${onlyNew ? 'bg-blue-600 border-blue-600' : 'border-gray-300 group-hover:border-blue-400'}`}>
                       {onlyNew && <Check size={12} className="text-white" />}
                     </div>
                     <input type="checkbox" checked={onlyNew} onChange={(e) => setOnlyNew(e.target.checked)} className="hidden" />
-                    <span className="text-gray-700 group-hover:text-blue-600 transition-colors">Yeni gələn</span>
+                    <span className="text-gray-700 group-hover:text-blue-600 transition-colors">{t('shop.newArrivalsFilter')}</span>
                   </label>
                   <label className="flex items-center gap-3 cursor-pointer group">
                     <div className={`w-5 h-5 rounded border flex items-center justify-center transition-colors ${onlyDiscount ? 'bg-blue-600 border-blue-600' : 'border-gray-300 group-hover:border-blue-400'}`}>
                       {onlyDiscount && <Check size={12} className="text-white" />}
                     </div>
                     <input type="checkbox" checked={onlyDiscount} onChange={(e) => setOnlyDiscount(e.target.checked)} className="hidden" />
-                    <span className="text-gray-700 group-hover:text-blue-600 transition-colors">Endirimli</span>
+                    <span className="text-gray-700 group-hover:text-blue-600 transition-colors">{t('shop.discountedFilter')}</span>
                   </label>
                 </div>
               </div>
 
               {/* Price Filter */}
-              <FilterSection title="Qiymət Aralığı">
+              <FilterSection title={t('shop.priceRange')}>
                 <div className="flex items-center gap-3">
                   <div className="relative flex-1">
                     <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">$</span>
@@ -255,7 +257,7 @@ const ProductList = () => {
 
               {/* Type Filter */}
               {availableTypes.length > 0 && (
-                <FilterSection title="Kateqoriya">
+                <FilterSection title={t('shop.category')}>
                   <div className="space-y-2">
                     {availableTypes.map(type => (
                       <label key={type} className="flex items-center gap-3 cursor-pointer group">
@@ -271,7 +273,7 @@ const ProductList = () => {
               )}
 
               {/* Brand Filter */}
-              <FilterSection title="Brendlər">
+              <FilterSection title={t('shop.brands')}>
                 <div className="space-y-2 max-h-60 overflow-y-auto pr-2 custom-scrollbar">
                   {brands.map(brand => (
                     <label key={brand.id} className="flex items-center gap-3 cursor-pointer group">
@@ -292,7 +294,7 @@ const ProductList = () => {
                 onClick={() => setMobileFiltersOpen(false)}
                 className="w-full bg-gray-900 text-white py-3.5 rounded-xl font-bold shadow-lg shadow-gray-200 active:scale-95 transition-all"
               >
-                Nəticələri göstər ({sortedProducts.length})
+                {t('shop.showResults', { count: sortedProducts.length })}
               </button>
             </div>
           </div>
@@ -312,7 +314,7 @@ const ProductList = () => {
             </h1>
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-4">
               <p className="text-gray-500">
-                <span className="font-bold text-gray-900">{sortedProducts.length}</span> məhsul tapıldı
+                <span className="font-bold text-gray-900">{t('shop.productsFound', { count: sortedProducts.length })}</span>
               </p>
               
               <div className="flex items-center gap-3">
@@ -322,14 +324,14 @@ const ProductList = () => {
                     onChange={(e) => setSortBy(e.target.value)}
                     className="appearance-none bg-white border border-gray-200 pl-4 pr-10 py-2.5 rounded-xl text-sm font-medium text-gray-700 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 hover:border-blue-300 transition-all shadow-sm"
                   >
-                    <option value="newest">Ən yeni</option>
-                    <option value="oldest">Ən köhnə</option>
-                    <option value="price-asc">Ucuzdan bahaya</option>
-                    <option value="price-desc">Bahadan ucuza</option>
-                    <option value="popularity-desc">Ən populyar</option>
-                    <option value="popularity-asc">Ən az populyar</option>
-                    <option value="a-z">A-dan Z-ə</option>
-                    <option value="z-a">Z-dən A-ya</option>
+                    <option value="newest">{t('shop.sortBy.newest')}</option>
+                    <option value="oldest">{t('shop.sortBy.oldest')}</option>
+                    <option value="price-asc">{t('shop.sortBy.priceLowHigh')}</option>
+                    <option value="price-desc">{t('shop.sortBy.priceHighLow')}</option>
+                    <option value="popularity-desc">{t('shop.sortBy.popularityDesc')}</option>
+                    <option value="popularity-asc">{t('shop.sortBy.popularityAsc')}</option>
+                    <option value="a-z">{t('shop.sortBy.az')}</option>
+                    <option value="z-a">{t('shop.sortBy.za')}</option>
                   </select>
                   <ChevronDown size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none group-hover:text-blue-500 transition-colors" />
                 </div>
@@ -353,19 +355,19 @@ const ProductList = () => {
                 ))}
                 {onlyNew && (
                   <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-green-50 text-green-700 text-xs font-medium border border-green-100">
-                    Yeni gələn <button onClick={() => setOnlyNew(false)}><X size={12} /></button>
+                    {t('shop.newArrivalsFilter')} <button onClick={() => setOnlyNew(false)}><X size={12} /></button>
                   </span>
                 )}
                 {onlyDiscount && (
                   <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-red-50 text-red-700 text-xs font-medium border border-red-100">
-                    Endirimli <button onClick={() => setOnlyDiscount(false)}><X size={12} /></button>
+                    {t('shop.discountedFilter')} <button onClick={() => setOnlyDiscount(false)}><X size={12} /></button>
                   </span>
                 )}
                 <button 
                   onClick={clearAllFilters}
                   className="text-xs text-gray-500 hover:text-red-500 underline ml-2 transition-colors"
                 >
-                  Təmizlə
+                  {t('shop.clear')}
                 </button>
               </div>
             )}
@@ -400,13 +402,13 @@ const ProductList = () => {
                 <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Filter size={32} className="text-gray-300" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Heç bir məhsul tapılmadı</h3>
-                <p className="text-gray-500 mb-6 max-w-md mx-auto">Axtarış kriteriyalarınıza uyğun gələn məhsul yoxdur. Filtrləri təmizləyərək yenidən cəhd edin.</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{t('shop.noProducts')}</h3>
+                <p className="text-gray-500 mb-6 max-w-md mx-auto">{t('shop.noProductsDesc')}</p>
                 <button 
                     onClick={clearAllFilters}
                     className="px-6 py-2.5 bg-gray-900 text-white rounded-xl font-medium hover:bg-gray-800 transition-colors shadow-lg shadow-gray-200"
                 >
-                    Bütün məhsulları göstər
+                    {t('shop.showAll')}
                 </button>
              </div>
           )}

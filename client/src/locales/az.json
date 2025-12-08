@@ -1,0 +1,132 @@
+{
+  "common": {
+    "home": "Ana Səhifə",
+    "search": "Axtar...",
+    "searchBtn": "Axtar",
+    "account": "Hesabım",
+    "logout": "Çıxış et",
+    "login": "Daxil ol",
+    "cart": "Səbət",
+    "favorites": "Sevimli"
+  },
+  "menu": {
+    "mens": "Kişi geyimi",
+    "womens": "Qadın geyimi",
+    "kids": "Uşaq geyimi",
+    "beauty": "Ətriyyat və kosmetika",
+    "electronics": "Elektronika",
+    "discount": "Endirim",
+    "all": "Bütün məhsullar"
+  },
+  "product": {
+    "new": "Yeni",
+    "top": "Top",
+    "added": "Əlavə edildi",
+    "addToCart": "Səbətə əlavə et",
+    "review": "dəyərləndirmə",
+    "viewDetails": "Məhsulun bütün detallarına bax",
+    "description": "Bu məhsul yüksək keyfiyyətli materiallardan hazırlanmışdır. Gündəlik istifadə üçün idealdır və rahatlığı ilə seçilir. {{brand}} markasının keyfiyyət zəmanəti ilə.",
+    "discountOff": "Endirim",
+    "notFound": "Məhsul tapılmadı",
+    "returnToProducts": "Məhsullara qayıt",
+    "bestSeller": "Top Satış",
+    "views": "baxış",
+    "features": {
+      "delivery": { "title": "Çatdırılma", "value": "Pulsuz Çatdırılma" },
+      "warranty": { "title": "Zəmanət", "value": "Original Məhsul" },
+      "return": { "title": "Qaytarılma", "value": "30 Gün İadə" }
+    },
+    "tabs": {
+      "about": "Məhsul Haqqında",
+      "specs": "Xüsusiyyətlər",
+      "reviews": "Rəylər"
+    },
+    "reviews": {
+      "empty": "Hələki rəy yoxdur."
+    },
+    "similarProducts": "Bənzər Məhsullar",
+    "specs": {
+      "brand": "Brend",
+      "category": "Kateqoriya",
+      "material": "Material",
+      "season": "Mövsüm",
+      "allSeasons": "Bütün fəsillər"
+    },
+    "descriptionList": {
+      "material": "Yüksək keyfiyyətli material",
+      "design": "Rahat və şıq dizayn",
+      "usage": "Uzun ömürlü istifadə",
+      "cleaning": "Asan təmizlənə bilən"
+    }
+  },
+  "cart": {
+    "title": "Səbətiniz",
+    "empty": "Səbətiniz boşdur",
+    "continueShopping": "Alış-verişə davam et",
+    "total": "Ümumi məbləğ",
+    "checkout": "Sifarişi rəsmiləşdir",
+    "clear": "Səbəti təmizlə",
+    "summary": "Sifariş xülasəsi",
+    "shipping": "Çatdırılma",
+    "free": "Pulsuz",
+    "products": "Məhsullar",
+    "secure": "Təhlükəsiz ödəniş və sürətli çatdırılma zəmanəti",
+    "emptyMessage": "Hələ səbətinizə heç bir məhsul əlavə etməmisiniz. Alış-verişə başlamaq üçün ana səhifəyə keçin."
+  },
+  "favorites": {
+    "title": "Sevimlilər",
+    "empty": "Sevimlilər siyahısı boşdur",
+    "viewProducts": "Məhsullara bax"
+  },
+  "login": {
+    "welcome": "Xoş gəldiniz!",
+    "subtitle": "Davam etmək üçün hesabınıza daxil olun",
+    "emailLabel": "Email ünvanı",
+    "emailPlaceholder": "nümunə@email.com",
+    "passwordLabel": "Şifrə",
+    "forgotPassword": "Şifrəni unutmusunuz?",
+    "loggingIn": "Giriş edilir...",
+    "submit": "Daxil ol",
+    "noAccount": "Hesabınız yoxdur?",
+    "register": "Qeydiyyatdan keçin",
+    "copyright": "Bütün hüquqlar qorunur."
+  },
+  "home": {
+    "mostViewed": "Ən çox baxılanlar",
+    "mostViewedSubtitle": "Brendoo-nun ən populyar məhsullarını kəşf edin",
+    "discounted": "Endirimli Məhsullar",
+    "discountedSubtitle": "Möhtəşəm endirimləri qaçırmayın",
+    "newArrivals": "Yeni Məhsullar",
+    "newArrivalsSubtitle": "Ən son əlavə olunan məhsulları kəşf edin",
+    "partnerBrands": "Partnyor brendlər"
+  },
+  "shop": {
+    "filters": "Filtrlər",
+    "productCount": "{{count}} məhsul",
+    "status": "Status",
+    "newArrivalsFilter": "Yeni gələn",
+    "discountedFilter": "Endirimli",
+    "priceRange": "Qiymət Aralığı",
+    "category": "Kateqoriya",
+    "brands": "Brendlər",
+    "showResults": "Nəticələri göstər ({{count}})",
+    "allProducts": "Bütün Məhsullar",
+    "discountedProducts": "Endirimli Məhsullar",
+    "newArrivalsProducts": "Yeni Gələn Məhsullar",
+    "productsFound": "{{count}} məhsul tapıldı",
+    "sortBy": {
+      "newest": "Ən yeni",
+      "oldest": "Ən köhnə",
+      "priceLowHigh": "Ucuzdan bahaya",
+      "priceHighLow": "Bahadan ucuza",
+      "popularityDesc": "Ən populyar",
+      "popularityAsc": "Ən az populyar",
+      "az": "A-dan Z-ə",
+      "za": "Z-dən A-ya"
+    },
+    "clear": "Təmizlə",
+    "noProducts": "Heç bir məhsul tapılmadı",
+    "noProductsDesc": "Axtarış kriteriyalarınıza uyğun gələn məhsul yoxdur. Filtrləri təmizləyərək yenidən cəhd edin.",
+    "showAll": "Bütün məhsulları göstər"
+  }
+}
