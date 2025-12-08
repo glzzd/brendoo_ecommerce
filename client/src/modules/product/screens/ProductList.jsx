@@ -5,8 +5,6 @@ import ProductCard from '../components/ProductCard'
 import { products } from '@/demoDatas/products'
 import { brands } from '@/demoDatas/brands'
 import { menuItems } from '@/demoDatas/menu'
-import { useCart } from '@/context/CartContext'
-import { useFavorites } from '@/context/FavoritesContext'
 import { Check } from 'lucide-react'
 
 // Modern Accordion Component for Filters
@@ -33,8 +31,6 @@ const FilterSection = ({ title, children, isOpenDefault = true }) => {
 
 const ProductList = () => {
   const { category } = useParams()
-  const { addToCart } = useCart()
-  const { toggleFavorite, isFavorite } = useFavorites()
   
   // States
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
@@ -49,10 +45,6 @@ const ProductList = () => {
   const [page, setPage] = useState(1)
   const ITEMS_PER_PAGE = 15
   const observerTarget = useRef(null)
-
-  // Cart interaction states
-  const [addedToCart, setAddedToCart] = useState({})
-  const [quantities, setQuantities] = useState({})
 
   // Unique Types from products
   const availableTypes = useMemo(() => {
@@ -164,29 +156,6 @@ const ProductList = () => {
     setSelectedBrands(prev => 
       prev.includes(brandSlug) ? prev.filter(b => b !== brandSlug) : [...prev, brandSlug]
     )
-  }
-
-  const updateQuantity = (e, productId, delta) => {
-    e.preventDefault()
-    e.stopPropagation()
-    setQuantities(prev => {
-      const current = prev[productId] || 1
-      const next = Math.max(1, current + delta)
-      return { ...prev, [productId]: next }
-    })
-  }
-
-  const handleAddToCart = (e, product) => {
-    e.preventDefault()
-    e.stopPropagation()
-    const qty = quantities[product.id] || 1
-    addToCart(product, qty)
-    
-    setAddedToCart(prev => ({ ...prev, [product.id]: true }))
-    setTimeout(() => {
-      setAddedToCart(prev => ({ ...prev, [product.id]: false }))
-      setQuantities(prev => ({ ...prev, [product.id]: 1 }))
-    }, 2000)
   }
 
   // Active filters helpers
@@ -408,12 +377,6 @@ const ProductList = () => {
               <ProductCard 
                 key={`${product.id}-${idx}`}
                 product={product}
-                isFavorite={isFavorite(product.id)}
-                onToggleFavorite={toggleFavorite}
-                quantity={quantities[product.id]}
-                onUpdateQuantity={updateQuantity} 
-                isAddedToCart={addedToCart[product.id]}
-                onAddToCart={handleAddToCart}
               />
             ))}
           </div>

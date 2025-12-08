@@ -31,7 +31,6 @@ const ProductDetail = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [activeTab, setActiveTab] = useState('description');
   const [similarProducts, setSimilarProducts] = useState([]);
-  const [similarQuantities, setSimilarQuantities] = useState({});
 
   useEffect(() => {
     // Simulate API fetch
@@ -61,7 +60,6 @@ const ProductDetail = () => {
     setQuantity(1);
     setCurrentImageIndex(0);
     setActiveTab('description');
-    setSimilarQuantities({});
   }, [id]);
 
   if (loading) {
@@ -98,23 +96,6 @@ const ProductDetail = () => {
       const newQty = prev + change;
       return newQty < 1 ? 1 : newQty;
     });
-  };
-
-  const handleSimilarUpdateQuantity = (e, productId, change) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setSimilarQuantities(prev => {
-        const currentQty = prev[productId] || 1;
-        const newQty = Math.max(1, currentQty + change);
-        return { ...prev, [productId]: newQty };
-    });
-  };
-
-  const handleSimilarAddToCart = (e, product) => {
-    e.preventDefault();
-    e.stopPropagation();
-    const qty = similarQuantities[product.id] || 1;
-    addToCart(product, qty);
   };
 
   const nextImage = () => {
@@ -410,12 +391,6 @@ const ProductDetail = () => {
                 <ProductCard 
                   key={similarProduct.id}
                   product={similarProduct}
-                  isFavorite={favorites.some(fav => fav.id === similarProduct.id)}
-                  onToggleFavorite={toggleFavorite}
-                  isAddedToCart={cartItems.some(item => item.id === similarProduct.id)}
-                  onAddToCart={handleSimilarAddToCart}
-                  quantity={similarQuantities[similarProduct.id] || 1}
-                  onUpdateQuantity={handleSimilarUpdateQuantity}
                 />
               ))}
             </div>

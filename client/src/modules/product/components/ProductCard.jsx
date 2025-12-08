@@ -4,18 +4,20 @@ import { Heart, Eye, Star, Minus, Plus, Check, ShoppingBag, ChevronLeft, Chevron
 import { Dialog, DialogContent, DialogTrigger, DialogTitle } from '../../../components/ui/dialog'
 import ProductQuickView from './ProductQuickView'
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
+import { useCart } from '../../../context/CartContext'
+import { useFavorites } from '../../../context/FavoritesContext'
 
-const ProductCard = ({ 
-  product, 
-  isFavorite, 
-  onToggleFavorite, 
-  quantity = 1, 
-  onUpdateQuantity, 
-  isAddedToCart, 
-  onAddToCart 
-}) => {
+const ProductCard = ({ product }) => {
+  const { addToCart, cartItems } = useCart()
+  const { favorites, toggleFavorite } = useFavorites()
+  
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isQuickViewOpen, setIsQuickViewOpen] = useState(false)
+  const [quantity, setQuantity] = useState(1)
+  const [isAdded, setIsAdded] = useState(false)
+
+  const isFavorite = favorites.some(fav => fav.id === product.id)
+  const isInCart = cartItems.some(item => item.id === product.id)
   
   // Use images array if available, otherwise fallback to single image
   const images = product.images && product.images.length > 0 ? product.images : [product.image]
@@ -30,6 +32,27 @@ const ProductCard = ({
     e.preventDefault()
     e.stopPropagation()
     setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length)
+  }
+
+  const handleUpdateQuantity = (e, delta) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setQuantity(prev => Math.max(1, prev + delta))
+  }
+
+  const handleAddToCart = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    addToCart(product, quantity)
+    setIsAdded(true)
+    setTimeout(() => setIsAdded(false), 2000)
+    setQuantity(1)
+  }
+
+  const handleToggleFavorite = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    toggleFavorite(product)
   }
 
   return (
@@ -85,11 +108,7 @@ const ProductCard = ({
         {/* Floating Actions */}
         <div className="absolute right-3 top-3 flex flex-col gap-2 translate-x-12 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300 z-10">
           <button 
-            onClick={(e) => {
-              e.preventDefault()
-              e.stopPropagation()
-              onToggleFavorite(product)
-            }}
+            onClick={handleToggleFavorite}
             className={`w-9 h-9 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-300 ${
               isFavorite 
                 ? 'bg-red-500 text-white' 
@@ -119,9 +138,14 @@ const ProductCard = ({
                 <ProductQuickView 
                   product={product}
                   quantity={quantity}
-                  onUpdateQuantity={onUpdateQuantity}
-                  isAddedToCart={isAddedToCart}
-                  onAddToCart={onAddToCart}
+                  onUpdateQuantity={(delta) => setQuantity(prev => Math.max(1, prev + delta))}
+                  isAddedToCart={isInCart}
+                  onAddToCart={() => {
+                    addToCart(product, quantity)
+                    setIsAdded(true)
+                    setTimeout(() => setIsAdded(false), 2000)
+                    setQuantity(1)
+                  }}
                   onClose={() => setIsQuickViewOpen(false)}
                 />
               </div>
@@ -166,7 +190,7 @@ const ProductCard = ({
           <div className="flex items-center gap-2">
               <div className="flex items-center bg-gray-50 rounded-lg p-1 h-9 border border-gray-100">
                   <button 
-                      onClick={(e) => onUpdateQuantity(e, product.id, -1)}
+                      onClick={(e) => handleUpdateQuantity(e, -1)}
                       className="w-7 h-full flex items-center justify-center text-gray-400 hover:text-gray-900 transition-colors"
                   >
                       <Minus size={14} />
@@ -175,7 +199,7 @@ const ProductCard = ({
                       {quantity}
                   </span>
                   <button 
-                      onClick={(e) => onUpdateQuantity(e, product.id, 1)}
+                      onClick={(e) => handleUpdateQuantity(e, 1)}
                       className="w-7 h-full flex items-center justify-center text-gray-400 hover:text-gray-900 transition-colors"
                   >
                       <Plus size={14} />
@@ -183,14 +207,14 @@ const ProductCard = ({
               </div>
               
               <button 
-                onClick={(e) => onAddToCart(e, product)}
+                onClick={handleAddToCart}
                 className={`h-9 px-4 rounded-lg flex items-center justify-center transition-all duration-300 shadow-sm ${
-                  isAddedToCart
+                  isAdded || isInCart
                     ? 'bg-green-500 text-white hover:bg-green-600 w-auto gap-2'
                     : 'bg-gray-900 text-white hover:bg-blue-600 hover:shadow-blue-200'
                 }`}
               >
-                {isAddedToCart ? (
+                {(isAdded || isInCart) ? (
                     <>
                       <Check size={16} />
                       <span className="text-xs font-bold">Əlavə edildi</span>
