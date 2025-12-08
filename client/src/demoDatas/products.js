@@ -20,11 +20,11 @@ export const products = [
     views: 12500,
     category: 'kisi-geyimi',
     type: 'shoes',
-    createdAt: '2023-11-15'
+    createdAt: '2023-12-01T10:00:00Z'
   },
   {
     id: 2,
-    name: 'Air Force 1 \'07',
+    name: "Air Force 1 '07",
     brand: 'Nike',
     brandSlug: 'nike',
     image: nike,
@@ -35,7 +35,7 @@ export const products = [
     views: 18900,
     category: 'kisi-geyimi',
     type: 'shoes',
-    createdAt: '2023-10-01'
+    createdAt: '2023-11-20T14:30:00Z'
   },
   {
     id: 3,
@@ -49,7 +49,7 @@ export const products = [
     views: 8400,
     category: 'qadin-geyimi',
     type: 'clothing',
-    createdAt: '2023-12-01'
+    createdAt: '2023-11-25T09:15:00Z'
   },
   {
     id: 4,
@@ -65,7 +65,7 @@ export const products = [
     views: 9200,
     category: 'qadin-geyimi',
     type: 'clothing',
-    createdAt: '2023-09-15'
+    createdAt: '2023-10-15T16:45:00Z'
   },
   {
     id: 5,
@@ -80,7 +80,7 @@ export const products = [
     views: 5600,
     category: 'kisi-geyimi',
     type: 'clothing',
-    createdAt: '2023-11-20'
+    createdAt: '2023-12-05T11:20:00Z'
   },
   {
     id: 6,
@@ -95,7 +95,7 @@ export const products = [
     views: 25000,
     category: 'etriyyat-kosmetika',
     type: 'perfume',
-    createdAt: '2023-08-01'
+    createdAt: '2023-09-10T08:00:00Z'
   },
   {
     id: 7,
@@ -109,7 +109,7 @@ export const products = [
     views: 14500,
     category: 'kisi-geyimi',
     type: 'clothing',
-    createdAt: '2023-10-20'
+    createdAt: '2023-11-01T13:00:00Z'
   },
   {
     id: 8,
@@ -124,7 +124,7 @@ export const products = [
     views: 7800,
     category: 'usag-geyimi',
     type: 'shoes',
-    createdAt: '2023-09-05'
+    createdAt: '2023-10-25T15:30:00Z'
   },
   {
     id: 9,
@@ -139,7 +139,7 @@ export const products = [
     views: 3200,
     category: 'qadin-geyimi',
     type: 'clothing',
-    createdAt: '2023-11-25'
+    createdAt: '2023-12-08T09:00:00Z'
   },
   {
     id: 10,
@@ -154,7 +154,7 @@ export const products = [
     views: 11000,
     category: 'usag-geyimi',
     type: 'shoes',
-    createdAt: '2023-11-10'
+    createdAt: '2023-12-02T10:45:00Z'
   },
   {
     id: 11,
@@ -170,7 +170,7 @@ export const products = [
     views: 4500,
     category: 'qadin-geyimi',
     type: 'clothing',
-    createdAt: '2023-10-15'
+    createdAt: '2023-11-12T14:15:00Z'
   },
   {
     id: 12,
@@ -186,6 +186,6 @@ export const products = [
     views: 19500,
     category: 'etriyyat-kosmetika',
     type: 'perfume',
-    createdAt: '2023-09-01'
+    createdAt: '2023-09-20T11:30:00Z'
   }
 ];
