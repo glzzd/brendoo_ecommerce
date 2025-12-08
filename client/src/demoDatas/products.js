@@ -60,6 +60,7 @@ export const products = [
     brand: 'Bershka',
     brandSlug: 'bershka',
     image: bershka,
+    images: [bershka, zara, nike],
     price: 45.90,
     originalPrice: 59.90,
     rating: 4.6,
