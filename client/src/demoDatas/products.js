@@ -12,6 +12,7 @@ export const products = [
     brand: 'Adidas',
     brandSlug: 'adidas',
     image: adidas,
+    images: [adidas, nike, zara],
     price: 180,
     originalPrice: 200,
     rating: 4.8,

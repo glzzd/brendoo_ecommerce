@@ -1,11 +1,13 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { Filter, ChevronDown, Heart, Star, Eye, ChevronLeft, ChevronRight, X, Minus, Plus, ShoppingBag, Check, SlidersHorizontal, ChevronUp } from 'lucide-react'
+import { Filter, ChevronDown, ChevronLeft, ChevronRight, X, SlidersHorizontal, ChevronUp } from 'lucide-react'
+import ProductCard from '../components/ProductCard'
 import { products } from '@/demoDatas/products'
 import { brands } from '@/demoDatas/brands'
 import { menuItems } from '@/demoDatas/menu'
 import { useCart } from '@/context/CartContext'
 import { useFavorites } from '@/context/FavoritesContext'
+import { Check } from 'lucide-react'
 
 // Modern Accordion Component for Filters
 const FilterSection = ({ title, children, isOpenDefault = true }) => {
@@ -45,7 +47,7 @@ const ProductList = () => {
   
   // Pagination State
   const [page, setPage] = useState(1)
-  const ITEMS_PER_PAGE = 8
+  const ITEMS_PER_PAGE = 12
   const observerTarget = useRef(null)
 
   // Cart interaction states
@@ -217,14 +219,14 @@ const ProductList = () => {
         <span className="text-sm font-medium text-gray-500">{sortedProducts.length} məhsul</span>
       </div>
 
-      <div className="container mx-auto px-4 py-8 flex gap-8 relative">
+      <div className="container mx-auto px-4 py-8 flex items-start gap-8 relative">
         {/* Sidebar Filters - Desktop */}
         <aside className={`
-          fixed inset-0 z-50 bg-white lg:bg-transparent lg:static lg:z-0 lg:w-72 lg:block
+          fixed inset-0 z-50 bg-white lg:bg-transparent lg:static lg:z-0 lg:w-64 lg:block lg:sticky lg:top-24
           transition-transform duration-300 ease-in-out
           ${mobileFiltersOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
         `}>
-          <div className="flex flex-col h-full lg:h-auto lg:sticky lg:top-24 bg-white lg:rounded-2xl lg:shadow-sm lg:border lg:border-gray-100 overflow-hidden">
+          <div className="flex flex-col h-full bg-white lg:rounded-2xl lg:shadow-sm lg:border lg:border-gray-100 overflow-hidden lg:overflow-y-auto custom-scrollbar">
             {/* Mobile Header */}
             <div className="flex justify-between items-center p-5 border-b lg:hidden">
               <h2 className="text-xl font-bold text-gray-900">Filtrlər</h2>
@@ -401,136 +403,24 @@ const ProductList = () => {
           </div>
 
           {/* Product Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {displayedProducts.map((product, idx) => (
-              <div 
-                key={`${product.id}-${idx}`} 
-                className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:border-blue-100 transition-all duration-300 flex flex-col h-full relative"
-              >
-                {/* Image Area */}
-                <div className="relative aspect-[4/5] p-6 bg-gray-50/50 flex items-center justify-center overflow-hidden group-hover:bg-gray-100/50 transition-colors">
-                  <img 
-                    src={product.image} 
-                    alt={product.name} 
-                    className="w-full h-full object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-110"
-                  />
-                  
-                  {/* Badges */}
-                  <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
-                    {product.isNew && (
-                      <span className="px-2.5 py-1 bg-blue-600 text-white text-[10px] font-bold tracking-wider uppercase rounded shadow-sm shadow-blue-200">Yeni</span>
-                    )}
-                    {product.isBestSeller && (
-                      <span className="px-2.5 py-1 bg-amber-500 text-white text-[10px] font-bold tracking-wider uppercase rounded shadow-sm shadow-amber-200">Top</span>
-                    )}
-                    {product.discount && (
-                      <span className="px-2.5 py-1 bg-red-500 text-white text-[10px] font-bold tracking-wider uppercase rounded shadow-sm shadow-red-200">-{product.discount}%</span>
-                    )}
-                  </div>
-
-                  {/* Floating Actions */}
-                  <div className="absolute right-3 top-3 flex flex-col gap-2 translate-x-12 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300 z-10">
-                    <button 
-                      onClick={(e) => {
-                        e.preventDefault()
-                        e.stopPropagation()
-                        toggleFavorite(product)
-                      }}
-                      className={`w-9 h-9 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-300 ${
-                        isFavorite(product.id) 
-                          ? 'bg-red-500 text-white' 
-                          : 'bg-white text-gray-400 hover:text-red-500'
-                      }`}
-                    >
-                      <Heart size={18} className={isFavorite(product.id) ? 'fill-current' : ''} />
-                    </button>
-                    <button className="w-9 h-9 bg-white rounded-full flex items-center justify-center shadow-lg text-gray-400 hover:text-blue-600 hover:scale-110 transition-all duration-300 delay-75">
-                      <Eye size={18} />
-                    </button>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-5 flex flex-col flex-1">
-                  <Link to={`/brands/${product.brandSlug}`} className="text-xs font-bold text-gray-400 uppercase mb-1 hover:text-blue-600 transition-colors tracking-wider">
-                    {product.brand}
-                  </Link>
-                  
-                  <Link to={`/products/${product.id}`} className="font-bold text-gray-900 text-base leading-snug mb-2 hover:text-blue-600 transition-colors line-clamp-2">
-                    {product.name}
-                  </Link>
-                  
-                  {/* Rating */}
-                  <div className="flex items-center gap-1.5 mb-4">
-                    <div className="flex text-amber-400">
-                       {[...Array(5)].map((_, i) => (
-                         <Star key={i} size={12} className={i < Math.floor(product.rating) ? "fill-current" : "text-gray-200 fill-current"} />
-                       ))}
-                    </div>
-                    <span className="text-xs font-medium text-gray-500">({product.reviewCount})</span>
-                  </div>
-
-                  {/* Price & Add to Cart */}
-                  <div className="mt-auto pt-4 border-t border-gray-50 flex items-center justify-between gap-4">
-                    <div className="flex flex-col">
-                      {product.originalPrice && product.originalPrice > product.price && (
-                        <span className="text-xs text-gray-400 line-through font-medium">
-                          ${product.originalPrice}
-                        </span>
-                      )}
-                      <span className="text-lg font-bold text-gray-900">
-                        ${product.price}
-                      </span>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                        {quantities[product.id] > 1 && (
-                            <div className="flex items-center bg-gray-50 rounded-lg p-1 h-9 border border-gray-100">
-                                <button 
-                                    onClick={(e) => updateQuantity(e, product.id, -1)}
-                                    className="w-7 h-full flex items-center justify-center text-gray-400 hover:text-gray-900 transition-colors"
-                                >
-                                    <Minus size={14} />
-                                </button>
-                                <span className="w-6 text-center text-sm font-bold text-gray-900">
-                                    {quantities[product.id]}
-                                </span>
-                                <button 
-                                    onClick={(e) => updateQuantity(e, product.id, 1)}
-                                    className="w-7 h-full flex items-center justify-center text-gray-400 hover:text-gray-900 transition-colors"
-                                >
-                                    <Plus size={14} />
-                                </button>
-                            </div>
-                        )}
-                        
-                        <button 
-                          onClick={(e) => handleAddToCart(e, product)}
-                          className={`h-9 px-4 rounded-lg flex items-center justify-center transition-all duration-300 shadow-sm ${
-                            addedToCart[product.id]
-                              ? 'bg-green-500 text-white hover:bg-green-600 w-auto gap-2'
-                              : 'bg-gray-900 text-white hover:bg-blue-600 hover:shadow-blue-200'
-                          }`}
-                        >
-                          {addedToCart[product.id] ? (
-                              <>
-                                <Check size={16} />
-                                <span className="text-xs font-bold">Əlavə edildi</span>
-                              </>
-                          ) : (
-                             <ShoppingBag size={18} />
-                          )}
-                        </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <ProductCard 
+                key={`${product.id}-${idx}`}
+                product={product}
+                isFavorite={isFavorite(product.id)}
+                onToggleFavorite={toggleFavorite}
+                quantity={quantities[product.id]}
+                onUpdateQuantity={updateQuantity} 
+                isAddedToCart={addedToCart[product.id]}
+                onAddToCart={handleAddToCart}
+              />
             ))}
           </div>
 
           {/* Loading Skeleton / Infinite Scroll Sentinel */}
           {displayedProducts.length < sortedProducts.length && (
-            <div ref={observerTarget} className="py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div ref={observerTarget} className="py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 {[...Array(4)].map((_, i) => (
                     <div key={i} className="bg-white rounded-2xl p-4 border border-gray-100 h-[400px] animate-pulse">
                         <div className="w-full h-48 bg-gray-100 rounded-xl mb-4"></div>
