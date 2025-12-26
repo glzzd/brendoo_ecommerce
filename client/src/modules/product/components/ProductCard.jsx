@@ -10,6 +10,9 @@ import { useFavorites } from '../../../context/FavoritesContext'
 
 const ProductCard = ({ product }) => {
   const { t, i18n } = useTranslation()
+  const supportedLangs = ['en', 'az', 'tr']
+  const langCode = i18n.language?.split('-')[0]
+  const currentLang = supportedLangs.includes(langCode) ? langCode : 'en'
   const { addToCart, cartItems } = useCart()
   const { favorites, toggleFavorite } = useFavorites()
   
@@ -58,7 +61,7 @@ const ProductCard = ({ product }) => {
   }
 
   return (
-    <div className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:border-blue-100 transition-all duration-300 flex flex-col h-full relative">
+    <div className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:border-blue-100 transition-all duration-300 flex flex-col h-full relative ">
       {/* Image Area */}
       <div className="relative aspect-[4/5] p-6 bg-gray-50/50 flex items-center justify-center overflow-hidden group-hover:bg-gray-100/50 transition-colors">
         {/* Slider Controls - Only show if multiple images */}
@@ -90,7 +93,7 @@ const ProductCard = ({ product }) => {
 
         <img 
           src={images[currentImageIndex]} 
-          alt={product.name[i18n.language]} 
+          alt={product.name[currentLang]} 
           className="w-full h-full object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-110"
         />
         
@@ -134,7 +137,7 @@ const ProductCard = ({ product }) => {
             </DialogTrigger>
             <DialogContent className="min-w-7xl w-[95vw] h-[90vh] p-0 overflow-hidden flex flex-col bg-white rounded-2xl border-none shadow-2xl">
               <VisuallyHidden>
-                <DialogTitle>{product.name[i18n.language]}</DialogTitle>
+                <DialogTitle>{product.name[currentLang]}</DialogTitle>
               </VisuallyHidden>
               <div className="flex-1 h-full overflow-hidden p-6 md:p-10">
                 <ProductQuickView 
@@ -163,7 +166,7 @@ const ProductCard = ({ product }) => {
         </Link>
         
         <Link to={`/products/${product.id}`} className="font-bold text-gray-900 text-base leading-snug mb-2 hover:text-blue-600 transition-colors line-clamp-2">
-          {product.name[i18n.language]}
+          {product.name[currentLang]}
         </Link>
         
         {/* Rating */}
@@ -210,7 +213,7 @@ const ProductCard = ({ product }) => {
               
               <button 
                 onClick={handleAddToCart}
-                className={`h-9 px-4 rounded-lg flex items-center justify-center transition-all duration-300 shadow-sm ${
+                className={`h-9 px-4 w-30 rounded-lg flex items-center justify-center transition-all duration-300 shadow-sm ${
                   isAdded || isInCart
                     ? 'bg-green-500 text-white hover:bg-green-600 w-auto gap-2'
                     : 'bg-gray-900 text-white hover:bg-blue-600 hover:shadow-blue-200'

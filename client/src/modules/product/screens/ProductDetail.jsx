@@ -23,6 +23,9 @@ import {
 
 const ProductDetail = () => {
   const { t, i18n } = useTranslation();
+  const supportedLangs = ['en', 'az', 'tr'];
+  const langCode = i18n.language?.split('-')[0];
+  const currentLang = supportedLangs.includes(langCode) ? langCode : 'en';
   const { id } = useParams();
   const navigate = useNavigate();
   const { addToCart, cartItems } = useCart();
@@ -119,7 +122,7 @@ const ProductDetail = () => {
             <ChevronRight size={14} />
             <Link to="/products" className="hover:text-gray-900">{t('cart.products')}</Link>
             <ChevronRight size={14} />
-            <span className="text-gray-900 font-medium truncate max-w-[200px]">{product.name[i18n.language]}</span>
+            <span className="text-gray-900 font-medium truncate max-w-[200px]">{product.name[currentLang]}</span>
           </div>
         </div>
       </div>
@@ -148,7 +151,7 @@ const ProductDetail = () => {
               
               <img 
                 src={images[currentImageIndex]} 
-                alt={product.name[i18n.language]} 
+                alt={product.name[currentLang]} 
                 className="w-full h-full object-contain mix-blend-multiply p-12 transition-transform duration-500 hover:scale-105"
               />
 
@@ -205,7 +208,7 @@ const ProductDetail = () => {
               </div>
               
               <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
-                {product.name[i18n.language]}
+                {product.name[currentLang]}
               </h1>
               
               <div className="flex items-center gap-4 mb-6">
@@ -236,7 +239,7 @@ const ProductDetail = () => {
             </div>
 
             <p className="text-gray-600 leading-relaxed mb-8 text-lg">
-              {product.description[i18n.language]}
+              {product.description[currentLang]}
             </p>
 
             {/* Actions */}
@@ -347,7 +350,7 @@ const ProductDetail = () => {
                 {activeTab === 'description' && (
                     <div className="prose max-w-none text-gray-600">
                         <p>
-                            {product.description[i18n.language]}
+                            {product.description[currentLang]}
                         </p>
                         <ul className="mt-4 list-disc pl-5 space-y-2">
                             <li>{t('product.descriptionList.material')}</li>
@@ -366,7 +369,7 @@ const ProductDetail = () => {
                         <div className="flex justify-between py-3 border-b border-gray-100">
                             <span className="text-gray-500">{t('product.specs.category')}</span>
                             <span className="font-medium text-gray-900 capitalize">
-                              {menuItems.find(item => item.link.includes(product.category))?.name[i18n.language] || product.category.replace('-', ' ')}
+                              {menuItems.find(item => item.link.includes(product.category))?.name[currentLang] || product.category.replace('-', ' ')}
                             </span>
                         </div>
                         <div className="flex justify-between py-3 border-b border-gray-100">

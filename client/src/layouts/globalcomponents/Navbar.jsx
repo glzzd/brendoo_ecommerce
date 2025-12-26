@@ -5,6 +5,9 @@ import { useTranslation } from 'react-i18next'
 
 const Navbar = () => {
   const { t, i18n } = useTranslation()
+  const supportedLangs = ['en', 'az', 'tr']
+  const langCode = i18n.language?.split('-')[0]
+  const currentLang = supportedLangs.includes(langCode) ? langCode : 'en'
 
   return (
     <nav className='sticky top-0 z-30 bg-white border-b relative overflow-visible'>
@@ -16,7 +19,7 @@ const Navbar = () => {
                 to={item.link}
                 className={'text-sm md:text-base font-medium text-gray-700 hover:text-blue-600 transition-colors'}
               >
-                {item.name[i18n.language]}
+                {item.name[currentLang]}
               </Link>
             </li>
           ))}

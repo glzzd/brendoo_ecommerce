@@ -5,6 +5,9 @@ import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 
 const Influencers = () => {
   const { t, i18n } = useTranslation()
+  const supportedLangs = ['en', 'az', 'tr']
+  const langCode = i18n.language?.split('-')[0]
+  const currentLang = supportedLangs.includes(langCode) ? langCode : 'en'
   const allInfluencers = [...influencers, ...influencers, ...influencers]
   
   const [startIndex, setStartIndex] = useState(0)
@@ -160,7 +163,7 @@ const Influencers = () => {
                         ) : (
                             <div className={`w-full h-full flex items-center justify-center p-8 text-center ${selectedStory.stories[storyIndex].bg}`}>
                                 <p className="text-white text-2xl font-bold">
-                                    {selectedStory.stories[storyIndex].content[i18n.language]}
+                                    {selectedStory.stories[storyIndex].content[currentLang]}
                                 </p>
                             </div>
                         )}

@@ -16,6 +16,9 @@ import { ShoppingCart, X, Minus, Plus, Trash2 } from 'lucide-react'
 
 const Cart = () => {
   const { t, i18n } = useTranslation()
+  const supportedLangs = ['en', 'az', 'tr']
+  const langCode = i18n.language?.split('-')[0]
+  const currentLang = supportedLangs.includes(langCode) ? langCode : 'en'
   const { cartItems, removeFromCart, updateQuantity, cartCount, clearCart } = useCart()
   const { isAuthenticated } = useAuth()
   const navigate = useNavigate()
@@ -68,13 +71,13 @@ const Cart = () => {
                         <div key={item.id} className="flex gap-4 p-3 bg-white border border-gray-100 rounded-xl hover:border-blue-100 transition-colors shadow-sm">
                             {/* Image */}
                             <div className="w-20 h-20 bg-gray-50 rounded-lg flex items-center justify-center p-2 flex-shrink-0">
-                                <img src={item.image} alt={item.name[i18n.language]} className="w-full h-full object-contain mix-blend-multiply" />
+                                <img src={item.image} alt={item.name[currentLang]} className="w-full h-full object-contain mix-blend-multiply" />
                             </div>
 
                             {/* Info */}
                             <div className="flex-1 flex flex-col justify-between">
                                 <div>
-                                    <h3 className="text-sm font-semibold text-gray-900 line-clamp-2 mb-1">{item.name[i18n.language]}</h3>
+                                    <h3 className="text-sm font-semibold text-gray-900 line-clamp-2 mb-1">{item.name[currentLang]}</h3>
                                     <p className="text-xs text-gray-500">{item.brand}</p>
                                 </div>
                                 

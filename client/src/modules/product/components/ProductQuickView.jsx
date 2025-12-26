@@ -12,6 +12,9 @@ const ProductQuickView = ({
   onClose
 }) => {
   const { t, i18n } = useTranslation()
+  const supportedLangs = ['en', 'az', 'tr']
+  const langCode = i18n.language?.split('-')[0]
+  const currentLang = supportedLangs.includes(langCode) ? langCode : 'en'
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   
   // Use images array if available, otherwise fallback to single image
@@ -53,7 +56,7 @@ const ProductQuickView = ({
             
             <img 
                 src={images[currentImageIndex]} 
-                alt={product.name[i18n.language]} 
+                alt={product.name[currentLang]} 
                 className="w-full h-full object-contain mix-blend-multiply p-8 transition-transform duration-500 hover:scale-105"
             />
         </div>
@@ -83,7 +86,7 @@ const ProductQuickView = ({
                 {product.brand}
             </Link>
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">
-                {product.name[i18n.language]}
+                {product.name[currentLang]}
             </h2>
             
             {/* Rating */}

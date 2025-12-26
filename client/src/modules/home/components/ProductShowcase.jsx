@@ -23,7 +23,7 @@ const ProductShowcase = ({ title, subtitle, products, bgColor = 'bg-white' }) =>
   if (!products || products.length === 0) return null;
 
   return (
-    <section className={`py-12 ${bgColor}`}>
+    <section className={`py-10 ${bgColor}`}>
       <div className="container mx-auto px-6">
         <div className="flex justify-between items-end mb-8">
           <div>

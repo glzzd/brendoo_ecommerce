@@ -32,6 +32,9 @@ const FilterSection = ({ title, children, isOpenDefault = true }) => {
 
 const ProductList = () => {
   const { t, i18n } = useTranslation()
+  const supportedLangs = ['en', 'az', 'tr']
+  const langCode = i18n.language?.split('-')[0]
+  const currentLang = supportedLangs.includes(langCode) ? langCode : 'en'
   const { category } = useParams()
   
   // States
@@ -62,8 +65,8 @@ const ProductList = () => {
     if (category === 'new-arrivals') return t('shop.newArrivalsProducts')
     
     const menuItem = menuItems.find(item => item.link === `/shop/${category}`)
-    return menuItem ? menuItem.name[i18n.language] : category.replace(/-/g, ' ')
-  }, [category, t, i18n.language])
+    return menuItem ? menuItem.name[currentLang] : category.replace(/-/g, ' ')
+  }, [category, t, currentLang])
 
   // Filtering Logic
   const filteredProducts = useMemo(() => {
